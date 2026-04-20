@@ -625,10 +625,18 @@
           <p class="kicker" data-bind="liftoff.kicker"></p>
           <h1 class="display" id="sc-liftoff-h" data-bind="liftoff.title"></h1>
           <p class="subtitle" data-bind="liftoff.subtitle"></p>
-          <p class="byline">
-            <span data-bind="meta.author"></span> ·
-            <span data-bind="meta.dateline"></span>
-          </p>
+          <figure class="hero-video" aria-label="Intro video">
+            <div class="hero-video-frame">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/ichlfqHF6XM?rel=0&amp;modestbranding=1"
+                title="The Next Frontier of AI Isn't a Model. It's an Orbit."
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </figure>
           <div class="scroll-hint" data-layer="hint" aria-hidden="true">
             <span class="scroll-hint-label">Scroll to launch</span>
             <span class="scroll-hint-arrow">↓</span>
