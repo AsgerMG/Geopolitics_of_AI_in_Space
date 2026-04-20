@@ -7,18 +7,27 @@ export function createWhyNowScene(el) {
 
   const counter = el.querySelector(".counter-panel");
 
+  // Initial state for the counter (inline since it isn't in the cards list)
+  if (counter) {
+    counter.style.opacity = "0";
+    counter.style.transform = "translateY(12px)";
+    counter.style.transition =
+      "opacity 420ms var(--ease-out), transform 460ms var(--ease-out)";
+  }
+
   return {
     update(sub) {
-      // Pillars appear as sub climbs from 0.12 to 0.75
+      // All four pillars reveal between sub 0.05 and 0.45 — the rest of the
+      // scene's range is the "hold" phase where the reader settles in with
+      // a stable layout.
       pillars.forEach((p, i) => {
-        const threshold = 0.1 + i * 0.12;
+        const threshold = 0.05 + i * 0.1;
         p.classList.toggle("is-visible", sub > threshold);
       });
       if (counter) {
-        counter.classList.toggle("is-visible", sub > 0.72);
-        counter.style.opacity = sub > 0.72 ? "1" : "0";
-        counter.style.transform = sub > 0.72 ? "translateY(0)" : "translateY(16px)";
-        counter.style.transition = "opacity 360ms var(--ease-out), transform 400ms var(--ease-out)";
+        const show = sub > 0.5;
+        counter.style.opacity = show ? "1" : "0";
+        counter.style.transform = show ? "translateY(0)" : "translateY(12px)";
       }
     },
   };

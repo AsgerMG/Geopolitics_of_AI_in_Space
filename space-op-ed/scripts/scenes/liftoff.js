@@ -1,25 +1,23 @@
 // Scene 0 — Liftoff.
-// Title and subtitle fade in immediately, then fade out as the rocket climbs.
+// Opacity is handled by the global scene crossfade in main.js. This scene
+// only contributes a gentle parallax: the headline drifts upward slightly
+// as the rocket builds thrust, then the global crossfade takes over at the
+// scene boundary.
 
-import { clamp, smoothstep, remap } from "../util/lerp.js";
+import { smoothstep, remap } from "../util/lerp.js";
 
 export function createLiftoffScene(el) {
   const display = el.querySelector(".display");
   const subtitle = el.querySelector(".subtitle");
   const byline = el.querySelector(".byline");
-  const kicker = el.querySelector(".kicker");
 
   return {
     update(sub) {
-      // Title is visible from page load, fades out as the rocket takes off.
-      const fadeOut = 1 - smoothstep(remap(sub, 0.45, 0.95, 0, 1));
-      const y = -smoothstep(remap(sub, 0.45, 1.0, 0, 1)) * 40;
-      const style = `opacity: ${fadeOut.toFixed(3)}; transform: translateY(${y.toFixed(1)}px);`;
-
-      if (display) display.setAttribute("style", style);
-      if (subtitle) subtitle.setAttribute("style", style);
-      if (byline) byline.setAttribute("style", `opacity: ${(fadeOut * 0.9).toFixed(3)};`);
-      if (kicker) kicker.setAttribute("style", `opacity: ${fadeOut.toFixed(3)};`);
+      const y = -smoothstep(remap(sub, 0.3, 1.0, 0, 1)) * 24;
+      const t = `translateY(${y.toFixed(1)}px)`;
+      if (display) display.style.transform = t;
+      if (subtitle) subtitle.style.transform = t;
+      if (byline) byline.style.transform = t;
     },
   };
 }

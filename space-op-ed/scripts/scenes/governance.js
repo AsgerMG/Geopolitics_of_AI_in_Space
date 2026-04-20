@@ -23,19 +23,19 @@ export function createGovernanceScene(el) {
 
   return {
     update(sub) {
-      const showTreaties = sub > 0.1;
+      const showTreaties = sub > 0.05;
       treaties.forEach((t) => {
         t.style.opacity = showTreaties ? "1" : "0";
         t.style.transform = showTreaties ? "translateY(0)" : "translateY(8px)";
       });
 
       gaps.forEach((g, i) => {
-        const threshold = 0.35 + i * 0.1;
+        const threshold = 0.15 + i * 0.08;
         g.classList.toggle("is-visible", sub > threshold);
       });
 
       if (closer) {
-        const show = sub > 0.82;
+        const show = sub > 0.55;
         closer.style.opacity = show ? "1" : "0";
         closer.style.transform = show ? "translateY(0)" : "translateY(14px)";
       }

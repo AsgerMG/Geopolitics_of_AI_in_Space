@@ -230,9 +230,11 @@ export class Stage {
     let laneShift = 0;
     if (isWide) {
       const w = window.innerWidth;
+      // During flight the rocket/cluster live far to the left, leaving a
+      // generous right-hand reading column — like a broadsheet article with
+      // an illustration pinned to the outer margin.
       const right = w * 0.22;   // right lane offset during liftoff
-      const left  = -w * 0.22;  // left lane offset during flight
-      // Start on the right; pan through center to the left as the rocket climbs.
+      const left  = -w * 0.32;  // far-left lane offset during flight
       const panT = smoothstep(remap(progress, 0.05, 0.22, 0, 1));
       laneShift = lerp(right, left, panT);
     }

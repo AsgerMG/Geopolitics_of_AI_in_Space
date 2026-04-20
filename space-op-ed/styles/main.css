@@ -4,9 +4,11 @@
 
 :root {
   /* Colour tokens */
-  --ink: #f5f6f8;
+  --ink: #f2f3f5;
   --ink-muted: #a9b0c0;
   --ink-dim: #6c7486;
+  /* Signature red — a nod to the masthead red of weekly newspapers */
+  --economist-red: #e3120b;
   --ignition: #ff6b2b;
   --ignition-hot: #ff9a4d;
   --cyan: #7df9ff;
@@ -17,17 +19,20 @@
   --panel: rgba(10, 14, 26, 0.58);
   --panel-strong: rgba(8, 12, 22, 0.82);
 
-  /* Type scale */
+  /* Type scale — primarily serif (editorial).
+     Fraunces is a modern transitional serif close in feel to the paper's
+     own book-weight serif. System stack as fallback. */
   --serif: "Fraunces", "Iowan Old Style", "Georgia", "Times New Roman", serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", Helvetica, Arial,
     sans-serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas,
     monospace;
 
-  /* Layout */
+  /* Layout — a narrow stage-illustration column on the left and a wider
+     reading column on the right. Values echo newspaper column grids. */
   --content-max: 1240px;
   --gutter: clamp(1.25rem, 3vw, 2.5rem);
-  --lane: 46vw;
+  --lane: 36vw;
 
   /* Motion */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -64,12 +69,16 @@ body {
   padding: 0;
   background: var(--bg-0);
   color: var(--ink);
-  font-family: var(--sans);
+  /* Body copy is serif by default — newspaper feel. Sans is reserved for
+     technical readouts (altitude HUD, data labels). */
+  font-family: var(--serif);
+  font-weight: 400;
   font-size: 17px;
-  line-height: 1.55;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-feature-settings: "kern", "liga", "onum", "ss01";
 }
 
 html {
@@ -123,85 +132,137 @@ a:focus-visible {
   transform: translateY(0);
 }
 
-/* --- Typography primitives --- */
+/* ============================================================
+   Typography — editorial / broadsheet treatment
+   ============================================================ */
 
+/* Hero display — op-ed front-page headline. Tight tracking, generous size,
+   lowercase-friendly (no balance for long lines; allow pre-line line
+   breaks provided in copy). */
 .display {
   font-family: var(--serif);
   font-weight: 500;
   font-size: clamp(2.4rem, 6.4vw, 5.6rem);
   line-height: 1.02;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.018em;
   margin: 0;
   white-space: pre-line;
   text-wrap: balance;
-  text-shadow: 0 2px 40px rgba(0, 0, 0, 0.6);
+  font-feature-settings: "kern", "liga", "lnum";
+  color: #fafbfc;
 }
 
+/* Section / scene headline — like an article head inside a feature spread. */
 .scene-heading {
   font-family: var(--serif);
   font-weight: 500;
-  font-size: clamp(1.8rem, 3.8vw, 3.2rem);
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  margin: 0.4rem 0 0.6rem;
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.012em;
+  margin: 0.4rem 0 0.25rem;
   text-wrap: balance;
+  color: #fafbfc;
 }
 
+/* Deck / standfirst under the main headline — italic lead line. */
 .subtitle {
   font-family: var(--serif);
   font-style: italic;
-  font-weight: 300;
-  font-size: clamp(1.1rem, 1.9vw, 1.55rem);
+  font-weight: 400;
+  font-size: clamp(1.15rem, 1.9vw, 1.55rem);
   line-height: 1.35;
   color: var(--ink);
   margin: 1rem 0 0;
   text-wrap: balance;
-  max-width: 36ch;
+  max-width: 40ch;
 }
 
+/* Lede — first paragraph under a section heading. Upright serif, slightly
+   larger than body, measured column width. NOT italic — italic is reserved
+   for standfirsts and pull quotes, per classic editorial practice. */
 .scene-lede {
   font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
-  font-style: italic;
-  line-height: 1.4;
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(1.02rem, 1.35vw, 1.2rem);
+  line-height: 1.45;
   color: var(--ink);
-  margin: 0.3rem 0 0;
-  max-width: 44ch;
-  text-wrap: balance;
+  margin: 0.4rem 0 0;
+  max-width: 54ch;
+  text-wrap: pretty;
 }
 
+/* Drop cap on the lede paragraph — a classic newspaper flourish. The first
+   letter drops three lines and picks up the signature red accent. */
+.scene-lede.has-dropcap::first-letter {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 3em;
+  line-height: 0.88;
+  float: left;
+  padding: 0.08em 0.12em 0 0;
+  margin: 0.02em 0.08em 0 0;
+  color: var(--economist-red);
+  font-feature-settings: "lnum";
+}
+
+/* Kicker / section label (ACT I, ACT II …). Small-cap sans, subtle red
+   leading rule to the left — feels like a newspaper rubric. */
 .kicker {
-  font-family: var(--mono);
-  font-weight: 500;
-  font-size: 0.78rem;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 0.72rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--ignition);
-  margin: 0 0 0.2rem;
+  color: var(--economist-red);
+  margin: 0 0 0.35rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.kicker::before {
+  content: "";
+  width: 1.6rem;
+  height: 2px;
+  background: var(--economist-red);
+  flex: 0 0 auto;
 }
 
+/* Byline — "By AUTHOR · LOCATION" in small-cap sans, restrained. */
 .byline {
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
   color: var(--ink-muted);
   margin: 1.6rem 0 0;
   text-transform: uppercase;
 }
 
+/* Altitude chip — kept technical (mono) since it represents an instrument
+   readout rather than editorial copy. */
 .altitude-chip {
   display: inline-block;
-  padding: 0.3rem 0.7rem;
+  padding: 0.25rem 0.6rem;
   border: 1px solid var(--rule-strong);
   border-radius: 999px;
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   letter-spacing: 0.14em;
   color: var(--cyan);
   text-transform: uppercase;
   margin: 0 0 0.4rem;
   background: rgba(125, 249, 255, 0.04);
+}
+
+/* Thin section rule under the scene heading — echoes the hairline dividers
+   in broadsheet layouts. */
+.scene-rule {
+  width: 3rem;
+  height: 2px;
+  background: var(--economist-red);
+  margin: 0.1rem 0 0.7rem;
+  border: 0;
 }
 
 /* --- Reduced motion: deliver a readable static version --- */

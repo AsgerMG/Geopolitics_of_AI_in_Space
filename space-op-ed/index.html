@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
 
@@ -648,7 +648,8 @@
             <p class="altitude-chip" data-bind="whyNow.altitude"></p>
             <p class="kicker" data-bind="whyNow.kicker"></p>
             <h2 class="scene-heading" id="sc-whyNow-h" data-bind="whyNow.heading"></h2>
-            <p class="scene-lede" data-bind="whyNow.lede"></p>
+            <hr class="scene-rule" aria-hidden="true" />
+            <p class="scene-lede has-dropcap" data-bind="whyNow.lede"></p>
           </header>
 
           <ol class="pillars" data-bind-list="whyNow.pillars" data-template="pillar">
@@ -680,7 +681,8 @@
             <p class="altitude-chip" data-bind="actors.altitude"></p>
             <p class="kicker" data-bind="actors.kicker"></p>
             <h2 class="scene-heading" id="sc-actors-h" data-bind="actors.heading"></h2>
-            <p class="scene-lede" data-bind="actors.lede"></p>
+            <hr class="scene-rule" aria-hidden="true" />
+            <p class="scene-lede has-dropcap" data-bind="actors.lede"></p>
           </header>
 
           <div class="actors" data-bind-list="actors.cards" data-template="actor">
@@ -712,7 +714,8 @@
             <p class="altitude-chip" data-bind="governance.altitude"></p>
             <p class="kicker" data-bind="governance.kicker"></p>
             <h2 class="scene-heading" id="sc-gov-h" data-bind="governance.heading"></h2>
-            <p class="scene-lede" data-bind="governance.lede"></p>
+            <hr class="scene-rule" aria-hidden="true" />
+            <p class="scene-lede has-dropcap" data-bind="governance.lede"></p>
           </header>
 
           <ul class="treaties" data-bind-list="governance.treaties" data-template="treaty">
@@ -750,7 +753,8 @@
             <p class="altitude-chip" data-bind="futures.altitude"></p>
             <p class="kicker" data-bind="futures.kicker"></p>
             <h2 class="scene-heading" id="sc-futures-h" data-bind="futures.heading"></h2>
-            <p class="scene-lede" data-bind="futures.lede"></p>
+            <hr class="scene-rule" aria-hidden="true" />
+            <p class="scene-lede has-dropcap" data-bind="futures.lede"></p>
           </header>
 
           <div class="scenarios" data-bind-list="futures.scenarios" data-template="scenario">

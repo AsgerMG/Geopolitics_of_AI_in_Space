@@ -18,18 +18,18 @@ export function createFuturesScene(el) {
   return {
     update(sub) {
       scenarios.forEach((s, i) => {
-        const threshold = 0.06 + i * 0.11;
+        const threshold = 0.03 + i * 0.08;
         s.classList.toggle("is-visible", sub > threshold);
       });
       if (oq) {
-        const show = sub > 0.58;
+        const show = sub > 0.4;
         oq.style.opacity = show ? "1" : "0";
-        oq.style.transform = show ? "translateY(0)" : "translateY(18px)";
+        oq.style.transform = show ? "translateY(0)" : "translateY(14px)";
       }
       if (closer) {
-        const show = sub > 0.82;
+        const show = sub > 0.7;
         closer.style.opacity = show ? "1" : "0";
-        closer.style.transform = show ? "translateY(0)" : "translateY(18px)";
+        closer.style.transform = show ? "translateY(0)" : "translateY(14px)";
       }
     },
   };
