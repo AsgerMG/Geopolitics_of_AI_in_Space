@@ -68,8 +68,9 @@
   .scene:not(.scene-liftoff) .scene-inner > .scenarios,
   .scene:not(.scene-liftoff) .scene-inner > .open-questions,
   .scene:not(.scene-liftoff) .scene-inner > .treaties,
+  .scene:not(.scene-liftoff) .scene-inner > .act-article,
   .scene:not(.scene-liftoff) .scene-inner > .counter-panel {
-    max-width: 68ch;
+    max-width: 64ch;
   }
 }
 
@@ -80,6 +81,22 @@
 .scene-inner {
   opacity: var(--scene-active, 1);
   will-change: opacity;
+}
+
+/* ---- Act I: long-form article exception ----
+   The Why Now scene hosts a full editorial column (introduction, two
+   sub-sections, an inline chart and a wide diagram). That article is
+   substantially taller than 100vh, so pinning its inner (the default
+   sticky behaviour) would leave the bottom paragraphs and the closing
+   diagram permanently below the fold. We let this scene's inner flow
+   with normal page scroll — the stage behind (rocket, stars, sky)
+   remains pinned via its own sticky container, so the reader scrolls
+   the prose past a stationary rocket, newspaper-style. */
+.scene-whyNow .scene-inner {
+  position: static;
+  min-height: 0;
+  padding-top: clamp(3rem, 7vh, 5rem);
+  padding-bottom: clamp(6rem, 12vh, 10rem);
 }
 
 /* ---------- Scene 0: Liftoff (masthead / front-page treatment) ---------- */
@@ -269,6 +286,138 @@
 
 @media (max-width: 520px) {
   .pillars { grid-template-columns: 1fr; }
+}
+
+/* ---------- Act I editorial article ----------
+   Long-form prose with an inline figure that the text wraps around,
+   mirroring the PDF / newspaper layout. Stable — nothing animates
+   per-paragraph. The whole block fades in/out at scene boundaries via
+   --scene-active. */
+
+.act-article {
+  margin-top: 0.9rem;
+  /* NOT flex: we need block-level children so the floated figure can
+     interact with sibling paragraphs (float only wraps inline/block
+     content, not flex items). */
+}
+
+.act-para {
+  margin: 0 0 0.9em;
+  font-family: var(--serif);
+  font-size: clamp(0.92rem, 1.1vw, 1.02rem);
+  line-height: 1.62;
+  color: var(--ink);
+}
+
+.act-subhead {
+  margin: 1.15rem 0 0.55rem;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 1.45vw, 1.22rem);
+  letter-spacing: -0.005em;
+  color: #fafbfc;
+}
+.act-subhead::before {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 2px;
+  background: var(--economist-red);
+  margin-bottom: 0.55rem;
+}
+
+/* The closer paragraph — Act I's kicker sentence. A red left-rule gives
+   it a final beat without changing the PDF's wording or structure. */
+.act-para--closer {
+  margin-top: 1.1rem;
+  padding: 0.15rem 0 0.15rem 1rem;
+  border-left: 3px solid var(--economist-red);
+  font-style: italic;
+  color: #fafbfc;
+}
+
+/* Figure floats right within the prose so text wraps around it,
+   as it would in a newspaper column. On narrow screens it collapses
+   back to a full-width block. */
+.act-figure {
+  float: right;
+  width: clamp(220px, 38%, 340px);
+  margin: 0.2rem 0 0.9rem 1.4rem;
+  padding: 0;
+  shape-outside: inset(0 round 6px);
+}
+.act-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid var(--rule-strong);
+  box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.8);
+}
+.act-figure figcaption {
+  margin-top: 0.4rem;
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  text-align: right;
+}
+
+/* Clear the float before a new section begins so subheads start on
+   a fresh baseline if the figure is still floating. */
+.act-subhead {
+  clear: right;
+}
+
+/* Wide variant: a panel-width diagram that caps a section rather than
+   floating alongside prose. It clears any prior floats and spans the
+   full column width with its caption beneath. */
+.act-figure--wide {
+  float: none;
+  clear: both;
+  width: 100%;
+  max-width: none;
+  margin: 1.2rem 0 0.4rem;
+  padding: 0;
+  shape-outside: none;
+}
+.act-figure--wide img {
+  width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  background: #06090f;
+  padding: 0.6rem;
+}
+.act-figure--wide figcaption {
+  text-align: left;
+  margin-top: 0.55rem;
+  font-family: var(--serif);
+  font-size: 0.78rem;
+  font-style: italic;
+  line-height: 1.45;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-dim);
+}
+.act-figure--wide figcaption a {
+  color: var(--economist-red);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+}
+.act-figure--wide figcaption a:hover {
+  color: #ff7a5c;
+}
+
+@media (max-width: 640px) {
+  .act-figure {
+    float: none;
+    width: 100%;
+    margin: 0.9rem 0;
+  }
+  .act-figure figcaption {
+    text-align: left;
+  }
 }
 
 /* ---------- Scene 2: Actors (briefing-card format) ---------- */

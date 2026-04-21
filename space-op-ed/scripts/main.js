@@ -98,8 +98,10 @@ function buildTextFallback(data) {
     },
     {
       heading: data.whyNow.heading,
-      body: data.whyNow.lede,
-      items: data.whyNow.pillars.map((p) => `${p.title} — ${p.body}`),
+      body: [
+        data.whyNow.lede,
+        ...data.whyNow.sections.flatMap((s) => s.body || []),
+      ].join(" "),
       counter: data.whyNow.counter,
     },
     {

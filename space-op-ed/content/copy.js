@@ -21,32 +21,37 @@ export const copy = {
   whyNow: {
     altitude: "12 km · Stratosphere",
     kicker: "Act I",
-    heading: "Why Space. Why Now.",
-    lede: "Four forces are pulling the data center off the planet.",
-    pillars: [
+    heading: "Datacenters in space: The strategic case.",
+    lede: "For most of the computing age, the question of where to put a server has been a dull matter of cheap land, cool air and abundant electrons. That has recently been changing.",
+    figure: {
+      src: "assets/energy-chart.jpeg",
+      alt: "Bar chart showing data centre electricity generation by energy source — Global, China, U.S. — 2025 vs 2035. Source: IEA / Statista.",
+      caption: "Source: IEA via Statista",
+    },
+    sections: [
       {
-        title: "Power",
-        big: "∞",
-        body: "Solar panels in orbit never see a cloud, a night, or a grid bottleneck. Power density is the binding constraint on AI — and space removes it.",
+        body: [
+          "The idea of putting data centres in orbit, which was long the preserve of science fiction, has, in the past eighteen months, slipped into investor decks, research papers and regulatory filings. The reason is that Earth has become rather inhospitable to the sort of computing the world now insists on doing.",
+          "Start with the demand shock. The International Energy Agency reckons that global electricity consumption from data centres will more than double by 2030, to roughly 945 terawatt-hours, which is slightly more than Japan consumes in total today. Artificial intelligence is the engine behind these projections. Power use by AI-optimised servers is growing at 30% a year and by the end of the decade America will draw more electricity to shuffle data than to smelt aluminium, forge steel, bake cement and manufacture chemicals combined. Alphabet, Amazon, Microsoft, Meta (the infamous Hyperscalers) are expected to spend some $400bn combined on terrestrial data centres in 2026 alone.",
+          "A persistent problem is that the grid is not keeping up. The IEA estimates that up to a fifth of planned projects risk delay for want of transmission capacity. In Virginia, Dublin and suburban Frankfurt, moratoria and utility queues now stretch past the decade. A persistent bottleneck which has led Hyperscalers to become energy companies that dabble in software. With nuclear-reactor offtake agreements that would have seemed deranged in 2020, now becoming routine.",
+        ],
       },
       {
-        title: "Cooling",
-        big: "3 K",
-        body: "Space is already near absolute zero. Radiative cooling against the cosmic background needs no water, no towers, no local permits.",
+        subhead: "A sunnier solution",
+        body: [
+          "Orbit, interestingly, solves several of these bottlenecks at once. A solar panel in the right low-Earth orbit, more specifically, a dawn-to-dusk sun-synchronous one that sits in nearly continuous sunlight, generates up to eight times more energy per panel per year than the equivalent on the ground according to Google's modelling. Solar irradiance in orbit is also 36% higher than at the surface, and neither weather nor night interferes. This makes it a thermodynamic dream for chips, where heat can be radiated directly away, with no need for the vast cooling requirements that terrestrial AI campuses require. Land use falls to zero. Planning permission is, for now, not a concept.",
+          "There are also structural advantages that play into strategic rather than strictly economic upsides. Space is, at least in principle, jurisdiction-light: a sovereign compute layer that sits outside the patchwork of European, American and Chinese data-protection regimes. Latency for Earth-to-orbit round trips is still an issue for anything consumer-facing, but the heaviest AI workloads such as model training, scientific simulation or batch inference, do not really require the results to come back in 20 milliseconds or 200. They care about the cost of compute capacity.",
+        ],
       },
       {
-        title: "Sovereignty",
-        big: "Δ",
-        body: "Orbital compute sits above every jurisdiction. Data can be processed in minutes of overflight, beyond the reach of any single regulator.",
-      },
-      {
-        title: "Control",
-        big: "⌖",
-        body: "Compute is becoming territory. Whoever owns the orbits owns the next layer of the AI stack.",
+        subhead: "Space-euphoria is not all that simple",
+        body: [
+          "But space-romance meets the rocket-launch equation. Google's feasibility paper, the most careful public analysis to date, concludes that launch costs to low-Earth orbit would need to fall to roughly $200 per kilogram before orbital compute becomes cost-competitive with a terrestrial data centre on a per-kilowatt basis. Current prices, depending on provider and profile, sit between $1,500 and $2,900. SpaceX's Starship, which is not yet operational, is meant to change this. It would have to scale to something like 180 launches a year, a tough goal to reach. Google's own projection for when such economics might arrive is the mid-2030s. That is roughly a decade away, which in AI-investment years is several eternities.",
+          "But, launch costs are not the only hurdle. Cosmic radiation degrades chips, passive thermal management at data-centre scale remains unproven and repairing a broken server in orbit could prove to be a harder task than just sending an available human hardware engineer. Naturally, the sustainability case is also often invoked as the clinching argument, but it is shakier than advertised. A single re-entering satellite deposits aluminium in the upper atmosphere; thousands of them, falling out of orbit each year, could measurably affect Earth's albedo. A 2023 study from the US Federal Aviation Administration suggested that by 2035 debris could kill one person every two years. Orbital slots, like the electromagnetic spectrum, are not infinite commons.",
+          "Data centres in space are neither fantasy nor imminent. They are a credible hedge against a ground-based bottleneck that is real, large and arriving fast, but the hedge is contingent on a launch-cost revolution that has been promised before. The strategic case is that the bet is now cheap enough to take. The strategic risk is that of a lot of infrastructure… not whether it works at some point, but whether it works in time and at scale.",
+        ],
       },
     ],
-    counter:
-      "None of this is free. Radiation hardens chips, launches still cost millions per tonne, and repair crews do not yet exist. The question is not whether space compute is hard — it is whether the gravity of the AI race will pay for it anyway.",
   },
 
   actors: {

@@ -618,7 +618,7 @@
       <section
         class="scene scene-liftoff"
         data-scene="liftoff"
-        data-range="0,0.12"
+        data-range="0,0.10"
         aria-labelledby="sc-liftoff-h"
       >
         <div class="scene-inner scene-inner--centered">
@@ -644,11 +644,11 @@
         </div>
       </section>
 
-      <!-- Scene 1: Why Now -->
+      <!-- Scene 1: The strategic case for datacenters in space -->
       <section
         class="scene scene-whyNow"
         data-scene="whyNow"
-        data-range="0.12,0.32"
+        data-range="0.10,0.50"
         aria-labelledby="sc-whyNow-h"
       >
         <div class="scene-inner">
@@ -660,20 +660,57 @@
             <p class="scene-lede has-dropcap" data-bind="whyNow.lede"></p>
           </header>
 
-          <ol class="pillars" data-bind-list="whyNow.pillars" data-template="pillar">
-            <template data-template-id="pillar">
-              <li class="pillar">
-                <span class="pillar-big" data-field="big"></span>
-                <h3 class="pillar-title" data-field="title"></h3>
-                <p class="pillar-body" data-field="body"></p>
-              </li>
-            </template>
-          </ol>
+          <article class="act-article">
+            <!-- Section 1: the demand shock — chart floats inline here so the
+                 second paragraph (IEA figures) wraps around it, as in the PDF. -->
+            <p class="act-para" data-bind="whyNow.sections.0.body.0"></p>
 
-          <aside class="counter-panel">
-            <p class="counter-label">The honest counter</p>
-            <p class="counter-body" data-bind="whyNow.counter"></p>
-          </aside>
+            <figure class="act-figure">
+              <img
+                src="assets/energy-chart.jpeg"
+                alt="Bar chart showing data centre electricity generation by energy source — Global, China, U.S. — 2025 vs 2035. Source: IEA / Statista."
+                loading="lazy"
+              />
+              <figcaption data-bind="whyNow.figure.caption"></figcaption>
+            </figure>
+
+            <p class="act-para" data-bind="whyNow.sections.0.body.1"></p>
+            <p class="act-para" data-bind="whyNow.sections.0.body.2"></p>
+
+            <!-- Section 2: A sunnier solution -->
+            <h3 class="act-subhead" data-bind="whyNow.sections.1.subhead"></h3>
+            <p class="act-para" data-bind="whyNow.sections.1.body.0"></p>
+            <p class="act-para" data-bind="whyNow.sections.1.body.1"></p>
+
+            <!-- Wide diagram that caps the "sunnier solution" section. It's
+                 full-width (not floated) because it is essentially a chart
+                 panel; floating it would squeeze the labels. -->
+            <figure class="act-figure act-figure--wide">
+              <img
+                src="assets/space-network.png"
+                alt="Diagram of NTT and SKY Perfect JSAT's Space Integrated Computing Network — GEO and LEO satellites, high-altitude platforms, and terrestrial 5G/6G networks connected by optical links."
+                loading="lazy"
+              />
+              <figcaption>
+                Compute in space will be one layer of a wider network —
+                GEO and LEO satellites, high-altitude platforms and
+                terrestrial 5G/6G, linked by optical relays.
+                Source: NTT &amp; SKY Perfect JSAT,
+                <a
+                  href="https://group.ntt/en/newsrelease/2022/04/26/220426a.html"
+                  target="_blank"
+                  rel="noopener"
+                  >Space Integrated Computing Network</a
+                >.
+              </figcaption>
+            </figure>
+
+            <!-- Section 3: Space-euphoria is not all that simple -->
+            <h3 class="act-subhead" data-bind="whyNow.sections.2.subhead"></h3>
+            <p class="act-para" data-bind="whyNow.sections.2.body.0"></p>
+            <p class="act-para" data-bind="whyNow.sections.2.body.1"></p>
+            <p class="act-para act-para--closer" data-bind="whyNow.sections.2.body.2"></p>
+          </article>
         </div>
       </section>
 
@@ -681,7 +718,7 @@
       <section
         class="scene scene-actors"
         data-scene="actors"
-        data-range="0.32,0.56"
+        data-range="0.50,0.66"
         aria-labelledby="sc-actors-h"
       >
         <div class="scene-inner">
@@ -714,7 +751,7 @@
       <section
         class="scene scene-governance"
         data-scene="governance"
-        data-range="0.56,0.78"
+        data-range="0.66,0.82"
         aria-labelledby="sc-gov-h"
       >
         <div class="scene-inner">
@@ -753,7 +790,7 @@
       <section
         class="scene scene-futures"
         data-scene="futures"
-        data-range="0.78,1.0"
+        data-range="0.82,1.0"
         aria-labelledby="sc-futures-h"
       >
         <div class="scene-inner">

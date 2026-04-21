@@ -37,7 +37,6 @@ export class ScrollEngine {
       const h = (b - a) * trackHeight;
       s.el.style.height = `${h}px`;
     }
-    // Track's own height is the sum of its scenes (they fill it naturally).
   }
 
   _onResize() {

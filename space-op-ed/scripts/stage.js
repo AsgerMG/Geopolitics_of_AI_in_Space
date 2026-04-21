@@ -193,14 +193,14 @@ export class Stage {
     root.setProperty("--earth-scale", earthS.toFixed(3));
 
     // ---- Orbital rings ----
-    const orbitsOp = smoothstep(remap(progress, 0.28, 0.45, 0, 1))
+    const orbitsOp = smoothstep(remap(progress, 0.42, 0.55, 0, 1))
       * smoothstep(remap(progress, 1.0, 0.85, 0, 1));
     root.setProperty("--orbits-opacity", orbitsOp.toFixed(3));
 
-    // Fade satellites in during the actors scene
+    // Fade satellites in as the Act I → Act II handoff approaches.
     if (this.orbitsGroup) {
       const sats = this.orbitsGroup.querySelectorAll("circle");
-      const satBase = smoothstep(remap(progress, 0.32, 0.5, 0, 1))
+      const satBase = smoothstep(remap(progress, 0.46, 0.60, 0, 1))
         * smoothstep(remap(progress, 0.88, 0.78, 0, 1));
       sats.forEach((c, i) => {
         const delay = i * 0.02;
@@ -232,10 +232,12 @@ export class Stage {
       const w = window.innerWidth;
       // During flight the rocket/cluster live far to the left, leaving a
       // generous right-hand reading column — like a broadsheet article with
-      // an illustration pinned to the outer margin.
+      // an illustration pinned to the outer margin. The pan completes before
+      // Act I begins (at progress 0.12) so the rocket doesn't intrude on
+      // the reading column while the reader is trying to start the article.
       const right = w * 0.22;   // right lane offset during liftoff
-      const left  = -w * 0.32;  // far-left lane offset during flight
-      const panT = smoothstep(remap(progress, 0.05, 0.22, 0, 1));
+      const left  = -w * 0.34;  // far-left lane offset during flight
+      const panT = smoothstep(remap(progress, 0.04, 0.12, 0, 1));
       laneShift = lerp(right, left, panT);
     }
     root.setProperty("--rocket-x", `${(sway + laneShift).toFixed(1)}px`);
@@ -264,14 +266,16 @@ export class Stage {
     // no need to fade it behind the hero text.
     root.setProperty("--rocket-opacity", "1");
 
-    // Thrust: full during liftoff, starts cutting out when the rocket begins
-    // its transformation into the satellite cluster around progress 0.34.
-    const clusterMix = smoothstep(remap(progress, 0.34, 0.44, 0, 1));
-    const thrust = igniteT * (1 - smoothstep(remap(progress, 0.28, 0.42, 0, 1)) * 0.95);
+    // Thrust: full during liftoff, starts cutting out as the rocket begins
+    // its transformation into the satellite cluster right around the
+    // Act I → Act II boundary (progress 0.50).
+    const clusterMix = smoothstep(remap(progress, 0.46, 0.54, 0, 1));
+    const thrust = igniteT * (1 - smoothstep(remap(progress, 0.42, 0.52, 0, 1)) * 0.95);
     root.setProperty("--thrust", thrust.toFixed(3));
 
     // ---- Satellite cluster (replaces the rocket above ~1000 km) ----
-    // Cross-fade from rocket to cluster at progress 0.34–0.44 (≈900–1300 km in LEO band).
+    // Cross-fade from rocket to cluster at the Act I → Act II handoff
+    // (progress 0.46–0.54), so Act II opens on the satellite constellation.
     root.setProperty("--cluster-mix", clusterMix.toFixed(3));
 
     // Cluster starts high (where the rocket was climbing to) and gently drifts
@@ -279,15 +283,15 @@ export class Stage {
     // cluster appears up high, matching where the eye is tracking the rocket.
     const clusterStartY = -vh * 0.08;
     const clusterEndY = -vh * 0.04;
-    const clusterY = lerp(clusterStartY, clusterEndY, smoothstep(remap(progress, 0.38, 0.95, 0, 1)));
+    const clusterY = lerp(clusterStartY, clusterEndY, smoothstep(remap(progress, 0.50, 0.95, 0, 1)));
     root.setProperty("--cluster-y", `${clusterY.toFixed(1)}px`);
 
     // Slow ambient rotation for cinematic feel — just a subtle yaw
-    const clusterRot = (progress - 0.38) * 14;
+    const clusterRot = (progress - 0.50) * 14;
     root.setProperty("--cluster-rot", `${clusterRot.toFixed(2)}deg`);
 
     // Cluster emerges larger (dramatic reveal) and gently recedes past GEO
-    const clusterGrow = lerp(0.55, 1.1, smoothstep(remap(progress, 0.34, 0.58, 0, 1)));
+    const clusterGrow = lerp(0.55, 1.1, smoothstep(remap(progress, 0.46, 0.66, 0, 1)));
     const clusterRecede = lerp(1.0, 0.5, smoothstep(remap(progress, 0.78, 1.0, 0, 1)));
     root.setProperty("--cluster-scale", (clusterGrow * clusterRecede).toFixed(3));
 
