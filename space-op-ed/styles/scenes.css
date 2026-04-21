@@ -6,9 +6,7 @@
 .track {
   position: relative;
   width: 100%;
-  min-height: calc(var(--track-vh) * 1vh);
   z-index: 2;
-  /* The track sits after the stage; because stage is sticky, the track slides over it. */
   margin-top: -100vh;
   pointer-events: none;
 }
@@ -24,12 +22,9 @@
    the top (flex-start) so it stays visually rock-steady while the body
    content reveals beneath it. */
 .scene-inner {
-  position: sticky;
-  top: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  position: static;
+  min-height: 0;
+  display: block;
   padding: clamp(1.2rem, 3vw, 2.2rem) var(--gutter);
   pointer-events: auto;
 }
@@ -83,18 +78,7 @@
   will-change: opacity;
 }
 
-/* ---- Act I: long-form article exception ----
-   The Why Now scene hosts a full editorial column (introduction, two
-   sub-sections, an inline chart and a wide diagram). That article is
-   substantially taller than 100vh, so pinning its inner (the default
-   sticky behaviour) would leave the bottom paragraphs and the closing
-   diagram permanently below the fold. We let this scene's inner flow
-   with normal page scroll — the stage behind (rocket, stars, sky)
-   remains pinned via its own sticky container, so the reader scrolls
-   the prose past a stationary rocket, newspaper-style. */
 .scene-whyNow .scene-inner {
-  position: static;
-  min-height: 0;
   padding-top: clamp(3rem, 7vh, 5rem);
   padding-bottom: clamp(6rem, 12vh, 10rem);
 }

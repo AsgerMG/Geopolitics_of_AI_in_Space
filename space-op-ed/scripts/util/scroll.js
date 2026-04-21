@@ -25,18 +25,7 @@ export class ScrollEngine {
   }
 
   _layout() {
-    // Set each scene's height as a fraction of the configured track height.
-    const vh = window.innerHeight;
-    const trackVh = parseFloat(
-      getComputedStyle(document.documentElement).getPropertyValue("--track-vh")
-    ) || 900;
-    const trackHeight = (vh * trackVh) / 100;
-
-    for (const s of this.scenes) {
-      const [a, b] = s.range;
-      const h = (b - a) * trackHeight;
-      s.el.style.height = `${h}px`;
-    }
+    // Scene heights are determined by content — no forced heights needed.
   }
 
   _onResize() {

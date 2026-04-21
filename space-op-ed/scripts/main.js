@@ -209,11 +209,6 @@ function boot() {
   // 6. Scroll engine
   const track = document.getElementById("track");
 
-  // Narrow crossfade window straddling each scene boundary (as a fraction
-  // of GLOBAL progress). A scene stays at full opacity for its entire
-  // range — only the ~1.5% of scroll right around a boundary is used to
-  // hand off to the next scene. This keeps the headline stable for the
-  // whole time the reader is inside a scene.
   const FADE = 0.015;
 
   const engine = new ScrollEngine({
@@ -225,21 +220,9 @@ function boot() {
         const s = sceneEls[i];
         const sub = perScene[i].sub;
 
-        if (s.id === "liftoff") {
-          // Liftoff owns its own opacity so the masthead is visible at load
-          // and only fades out as the reader enters Act I.
-          const [, end] = s.range;
-          const fadeOut = 1 - smoothstep(
-            remap(progress, end - FADE, end + FADE, 0, 1)
-          );
-          if (s.inner) s.inner.style.setProperty("--scene-active", fadeOut.toFixed(3));
-        } else {
-          const [a, b] = s.range;
-          const fadeIn = smoothstep(remap(progress, a - FADE, a + FADE, 0, 1));
-          const fadeOut = 1 - smoothstep(remap(progress, b - FADE, b + FADE, 0, 1));
-          const active = clamp(fadeIn * fadeOut, 0, 1);
-          if (s.inner) s.inner.style.setProperty("--scene-active", active.toFixed(3));
-        }
+        const [a] = s.range;
+        const fadeIn = a === 0 ? 1 : smoothstep(remap(progress, a - FADE, a + FADE, 0, 1));
+        if (s.inner) s.inner.style.setProperty("--scene-active", fadeIn.toFixed(3));
 
         s.ctrl.update(sub, progress);
       }
