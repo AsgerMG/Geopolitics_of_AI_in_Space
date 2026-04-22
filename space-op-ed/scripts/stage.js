@@ -232,12 +232,13 @@ export class Stage {
       const w = window.innerWidth;
       // During flight the rocket/cluster live far to the left, leaving a
       // generous right-hand reading column — like a broadsheet article with
-      // an illustration pinned to the outer margin. The pan completes before
-      // Act I begins (at progress 0.12) so the rocket doesn't intrude on
-      // the reading column while the reader is trying to start the article.
+      // an illustration pinned to the outer margin. The pan completes well
+      // before Act I begins (at progress 0.10) so the rocket is already
+      // parked in the outer lane by the time the reader reaches the
+      // article's opening paragraphs — no crossing the reading column.
       const right = w * 0.22;   // right lane offset during liftoff
-      const left  = -w * 0.34;  // far-left lane offset during flight
-      const panT = smoothstep(remap(progress, 0.04, 0.12, 0, 1));
+      const left  = -w * 0.36;  // far-left lane offset during flight
+      const panT = smoothstep(remap(progress, 0.025, 0.075, 0, 1));
       laneShift = lerp(right, left, panT);
     }
     root.setProperty("--rocket-x", `${(sway + laneShift).toFixed(1)}px`);
@@ -262,9 +263,12 @@ export class Stage {
     const rScale = grow * recede;
     root.setProperty("--rocket-scale", rScale.toFixed(3));
 
-    // Rocket reads fully from the start — it sits in its own lane, so there's
-    // no need to fade it behind the hero text.
-    root.setProperty("--rocket-opacity", "1");
+    // Rocket flies the whole of Act I, then fades out right as the reader
+    // hits the pinned gallery ("The wager, in four frames" at progress
+    // 0.42). The satellite cluster takes the stage from there on — so
+    // when the pin releases, only the cluster comes back, not the rocket.
+    const rocketOpacity = 1 - smoothstep(remap(progress, 0.38, 0.42, 0, 1));
+    root.setProperty("--rocket-opacity", rocketOpacity.toFixed(3));
 
     // Thrust: full during liftoff, starts cutting out as the rocket begins
     // its transformation into the satellite cluster right around the

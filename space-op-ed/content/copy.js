@@ -49,10 +49,36 @@ export const copy = {
         body: [
           "The romance meets the rocket-launch equation. Google's feasibility paper, the most careful public analysis to date, concludes that launch costs to low-Earth orbit would need to fall to roughly $200 per kilogram before orbital compute becomes cost-competitive with a terrestrial data centre on a per-kilowatt basis. Current prices, depending on provider and profile, sit between $1,500 and $2,900. SpaceX's Starship, which is not yet operational at scale, is meant to change this, but would have to reach something like 180 launches a year, a demanding target. Google's own projection for when the economics might arrive is the mid-2030s, which in AI-investment years is several eternities.",
           "Launch costs are not the only hurdle. Cosmic radiation degrades chips, passive thermal management at data-centre scale remains unproven, and repairing a broken server in orbit is a rather more involved task than dispatching a hardware engineer. The sustainability case, often invoked as the clinching argument, is shakier than advertised. A single re-entering satellite deposits aluminium in the upper atmosphere and thousands of them falling out of orbit each year could measurably affect Earth's albedo. A 2023 FAA report projected that by 2035 debris from large constellations could injure or kill one person every two years, a finding SpaceX disputed but which independent researchers have not dismissed. Orbital slots, like the electromagnetic spectrum, are not infinite commons.",
-          "Data centres in space are neither fantasy nor imminent. They are a credible hedge against a ground-based bottleneck that is real, large and arriving fast, but the hedge is contingent on a launch-cost revolution that has been promised before. The strategic case is that the bet is now cheap enough to take seriously. The strategic risk is the one common to large infrastructure everywhere: not whether it works eventually, but whether it works in time and at scale.",
         ],
       },
     ],
+    gallery: {
+      kicker: "The wager, in four frames",
+      heading: "Neither fantasy nor imminent.",
+      text: "Data centres in space are neither fantasy nor imminent. They are a credible hedge against a ground-based bottleneck that is real, large and arriving fast, but the hedge is contingent on a launch-cost revolution that has been promised before. The strategic case is that the bet is now cheap enough to take seriously. The strategic risk is the one common to large infrastructure everywhere: not whether it works eventually, but whether it works in time and at scale.",
+      images: [
+        {
+          src: "assets/1Inside.avif",
+          title: "Building the hardware",
+          alt: "Engineers at Thales Alenia Space assembling a satellite payload in a cleanroom.",
+        },
+        {
+          src: "assets/2Starcloud_Prototype.webp",
+          title: "First orbital prototype",
+          alt: "A Starcloud prototype satellite alongside a docking module against the curve of Earth.",
+        },
+        {
+          src: "assets/3SC_sattelites.png",
+          title: "A modular constellation",
+          alt: "Rendering of a formation of Starcloud compute satellites connected by optical links.",
+        },
+        {
+          src: "assets/4Starcloud_Vision_Solar_Panels.webp",
+          title: "The 5 GW vision",
+          alt: "A full-scale 5 GW orbital data centre concept with a 4 km solar-panel array.",
+        },
+      ],
+    },
   },
 
   actors: {

@@ -129,13 +129,15 @@
   margin: 0.7rem 0 0;
   padding: 0;
   width: 100%;
-  /* Horizontal cap so it doesn't crowd the right-side rocket */
-  max-width: clamp(260px, 44vw, 440px);
+  /* Wide enough to feel prominent but must stay above the mountain silhouettes */
+  max-width: clamp(340px, 68vw, 680px);
 }
 .hero-video-frame {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
+  /* Hard ceiling so the bottom of the frame never reaches the mountains (~15vh from bottom) */
+  max-height: calc(75vh - 7rem);
   border-radius: 8px;
   overflow: hidden;
   background: #000;
@@ -143,13 +145,15 @@
   box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.9),
     0 0 0 1px rgba(255, 255, 255, 0.04) inset;
 }
-.hero-video-frame iframe {
+.hero-video-frame iframe,
+.hero-video-frame video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   border: 0;
   display: block;
+  object-fit: cover;
 }
 
 /* Two-column layout: masthead text on the left, rocket claiming the right */
@@ -158,7 +162,7 @@
     align-items: flex-start;
     text-align: left;
     padding-left: clamp(1.5rem, 5vw, 4rem);
-    padding-right: clamp(10rem, 40vw, 28rem);
+    padding-right: clamp(6rem, 28vw, 18rem);
     padding-bottom: clamp(2rem, 4vh, 3.5rem);
     justify-content: flex-start;
     padding-top: clamp(2rem, 5vh, 4rem);
@@ -177,7 +181,7 @@
     font-size: 0.68rem;
   }
   .hero-video {
-    max-width: clamp(260px, 44vw, 440px);
+    max-width: clamp(340px, 68vw, 680px);
   }
   /* Thin red rule under the byline — front-page masthead accent */
   .scene-liftoff .byline::before {
@@ -409,6 +413,180 @@
   .act-figure figcaption {
     text-align: left;
   }
+}
+
+/* ---------- Scene 1.5: Pinned gallery ----------
+   Split layout parked against the viewport while the reader scrolls
+   through the scene's range. The stage (rocket/cluster) is muted during
+   this moment via `body.stage-muted`, set by the scene controller. */
+
+.scene-gallery {
+  /* Tall enough that the sticky inner pins for roughly one extra viewport
+     of scroll beyond its own 100vh — enough dwell for the four images to
+     cycle without dragging. Shrinks on narrow screens where the sticky
+     releases and the grid flows normally. */
+  min-height: 220vh;
+  pointer-events: auto;
+  padding: 0;
+}
+.gallery-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 6vh, 5rem) clamp(1.2rem, 4vw, 3rem);
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+.gallery-split {
+  width: 100%;
+  max-width: 1280px;
+  display: grid;
+  grid-template-columns: minmax(260px, 34%) 1fr;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: center;
+}
+.gallery-text {
+  position: relative;
+  padding: 1.4rem 1.3rem 1.4rem 1.6rem;
+  background: rgba(7, 14, 34, 0.72);
+  border-left: 3px solid var(--economist-red);
+  border-radius: 2px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 28px 70px -30px rgba(0, 0, 0, 0.8);
+}
+.gallery-kicker {
+  margin: 0 0 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--economist-red);
+}
+.gallery-heading {
+  margin: 0 0 0.65rem;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(1.15rem, 1.7vw, 1.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.008em;
+  color: #fafbfc;
+  text-wrap: balance;
+}
+.gallery-body {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(0.92rem, 1.1vw, 1.02rem);
+  line-height: 1.6;
+  color: var(--ink);
+}
+.gallery-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(0.6rem, 1.1vw, 1rem);
+}
+.gallery-cell {
+  margin: 0;
+}
+.gallery-figure {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid var(--rule-strong);
+  background: #0a0e1a;
+  opacity: 0.48;
+  transform: translateY(10px) scale(0.985);
+  transition:
+    opacity 520ms var(--ease-out),
+    transform 520ms var(--ease-out),
+    box-shadow 520ms var(--ease-out),
+    border-color 520ms var(--ease-out);
+}
+.gallery-cell.is-active .gallery-figure {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  border-color: rgba(227, 18, 11, 0.75);
+  box-shadow:
+    0 26px 70px -28px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(227, 18, 11, 0.55);
+}
+.gallery-figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms var(--ease-out);
+}
+.gallery-cell.is-active .gallery-figure img {
+  transform: scale(1.03);
+}
+.gallery-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.55rem 0.8rem 0.5rem;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.55) 60%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fafbfc;
+}
+
+@media (max-width: 860px) {
+  .scene-gallery {
+    min-height: auto;
+  }
+  .gallery-sticky {
+    position: relative;
+    height: auto;
+    padding: clamp(1.5rem, 6vh, 3rem) clamp(1rem, 4vw, 2rem);
+  }
+  .gallery-split {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Reduced-motion users read linearly — release the sticky pin, show all
+   images at full opacity, and let the gallery flow as a normal block. */
+.reduced-motion .gallery-sticky {
+  position: relative;
+  height: auto;
+}
+.reduced-motion .gallery-figure {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stage mute: while the gallery's sticky panel is pinned in the viewport,
+   fade the cluster out so the image grid carries the frame. Stars and sky
+   stay on — they're the cosmos backdrop the images sit in front of. The
+   rocket is already gone by this point (faded permanently in stage.js),
+   so only the cluster needs muting here — and only the cluster comes
+   back when the pin releases. */
+body.stage-muted .cluster {
+  opacity: 0 !important;
+  transition: opacity 360ms var(--ease-out);
 }
 
 /* ---------- Scene 2: Actors (briefing-card format) ---------- */

@@ -13,6 +13,7 @@ import { prefersReducedMotion, onReducedMotionChange } from "./util/reducedMotio
 import { Stage } from "./stage.js";
 import { createLiftoffScene } from "./scenes/liftoff.js";
 import { createWhyNowScene } from "./scenes/whyNow.js";
+import { createGalleryScene } from "./scenes/gallery.js";
 import { createActorsScene } from "./scenes/actors.js";
 import { createGovernanceScene } from "./scenes/governance.js";
 import { createFuturesScene } from "./scenes/futures.js";
@@ -114,7 +115,10 @@ function buildTextFallback(data) {
       body: [
         data.whyNow.lede,
         ...data.whyNow.sections.flatMap((s) => s.body || []),
-      ].join(" "),
+        data.whyNow.gallery?.text,
+      ]
+        .filter(Boolean)
+        .join(" "),
       counter: data.whyNow.counter,
     },
     {
@@ -214,6 +218,7 @@ function boot() {
   const sceneDefs = [
     { id: "liftoff",    create: createLiftoffScene },
     { id: "whyNow",     create: createWhyNowScene },
+    { id: "gallery",    create: createGalleryScene },
     { id: "actors",     create: createActorsScene },
     { id: "governance", create: createGovernanceScene },
     { id: "futures",    create: createFuturesScene },

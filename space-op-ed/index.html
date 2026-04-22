@@ -627,14 +627,12 @@
           <p class="subtitle" data-bind="liftoff.subtitle"></p>
           <figure class="hero-video" aria-label="Intro video">
             <div class="hero-video-frame">
-              <iframe
-                src="https://www.youtube-nocookie.com/embed/ichlfqHF6XM?rel=0&amp;modestbranding=1"
-                title="The Next Frontier of AI Isn't a Model. It's an Orbit."
-                loading="lazy"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
+              <video
+                src="assets/intro.mp4"
+                controls
+                playsinline
+                preload="metadata"
+              ></video>
             </div>
           </figure>
           <div class="scroll-hint" data-layer="hint" aria-hidden="true">
@@ -648,7 +646,7 @@
       <section
         class="scene scene-whyNow"
         data-scene="whyNow"
-        data-range="0.10,0.50"
+        data-range="0.10,0.42"
         aria-labelledby="sc-whyNow-h"
       >
         <div class="scene-inner">
@@ -709,8 +707,36 @@
             <h3 class="act-subhead" data-bind="whyNow.sections.2.subhead"></h3>
             <p class="act-para" data-bind="whyNow.sections.2.body.0"></p>
             <p class="act-para" data-bind="whyNow.sections.2.body.1"></p>
-            <p class="act-para act-para--closer" data-bind="whyNow.sections.2.body.2"></p>
           </article>
+        </div>
+      </section>
+
+      <!-- Scene 1.5: Gallery — pinned split layout. The stage (rocket/cluster)
+           is muted during this moment so the images carry the frame. -->
+      <section
+        class="scene scene-gallery"
+        data-scene="gallery"
+        data-range="0.42,0.58"
+        aria-labelledby="sc-gallery-h"
+      >
+        <div class="gallery-sticky">
+          <div class="gallery-split">
+            <aside class="gallery-text">
+              <p class="gallery-kicker" data-bind="whyNow.gallery.kicker"></p>
+              <h2 class="gallery-heading" id="sc-gallery-h" data-bind="whyNow.gallery.heading"></h2>
+              <p class="gallery-body" data-bind="whyNow.gallery.text"></p>
+            </aside>
+            <ol class="gallery-grid" data-bind-list="whyNow.gallery.images" data-template="gimg">
+              <template data-template-id="gimg">
+                <li class="gallery-cell">
+                  <figure class="gallery-figure">
+                    <img data-field-attr="src|src" alt="" />
+                    <figcaption class="gallery-caption" data-field="title"></figcaption>
+                  </figure>
+                </li>
+              </template>
+            </ol>
+          </div>
         </div>
       </section>
 
@@ -718,7 +744,7 @@
       <section
         class="scene scene-actors"
         data-scene="actors"
-        data-range="0.50,0.66"
+        data-range="0.58,0.72"
         aria-labelledby="sc-actors-h"
       >
         <div class="scene-inner">
@@ -783,7 +809,7 @@
       <section
         class="scene scene-governance"
         data-scene="governance"
-        data-range="0.66,0.82"
+        data-range="0.72,0.86"
         aria-labelledby="sc-gov-h"
       >
         <div class="scene-inner">
@@ -938,7 +964,7 @@
       <section
         class="scene scene-futures"
         data-scene="futures"
-        data-range="0.82,1.0"
+        data-range="0.86,1.0"
         aria-labelledby="sc-futures-h"
       >
         <div class="scene-inner">
