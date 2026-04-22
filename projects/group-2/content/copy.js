@@ -1,0 +1,400 @@
+// All op-ed copy in one editable file.
+// Non-coders can edit this freely; structure is stable and consumed by the scene modules.
+
+export const copy = {
+  meta: {
+    title: "The Next Frontier of AI Isn't a Model. It's an Orbit.",
+    author: "Asger Møller Grimberg",
+    dateline: "An op-ed on the geopolitics of AI in space",
+    description:
+      "An interactive op-ed on the geopolitics of AI data centers in space.",
+  },
+
+  liftoff: {
+    kicker: "Geopolitics of Artificial Intelligence — Space & Datacenters",
+    title: "The Next Frontier of AI\nMay Not Be Trained on Earth.",
+    subtitle:
+      "Within a decade, the most consequential compute on Earth may not be on Earth at all.",
+    scrollHint: "Scroll to launch",
+  },
+
+  whyNow: {
+    altitude: "12 km · Stratosphere",
+    kicker: "Act I",
+    heading: "Datacenters in space: The strategic case.",
+    lede: "For most of the computing age, the question of where to put a server has been a dull matter of cheap land, cool air and abundant electrons. That has recently been changing.",
+    figure: {
+      src: "assets/energy-chart.jpeg",
+      alt: "Bar chart showing data centre electricity generation by energy source — Global, China, U.S. — 2025 vs 2035. Source: IEA / Statista.",
+      caption: "Source: IEA via Statista",
+    },
+    sections: [
+      {
+        body: [
+          "The idea of putting data centres in orbit, which was long the preserve of science fiction, has in the past eighteen months slipped into investor decks, research papers and regulatory filings. The reason is that Earth has become rather inhospitable to the sort of AI-related computing the world now insists on doing.",
+          "Start with the demand shock. The International Energy Agency reckons that global electricity consumption from data centres will more than double by 2030, to roughly 945 terawatt-hours, which is slightly more than Japan consumes in total today. Artificial intelligence is the engine behind these projections. Power use by AI-optimised servers is growing at 30% a year and by the end of the decade America will draw more electricity to shuffle data than to smelt aluminium, forge steel, bake cement and manufacture chemicals combined. Alphabet, Amazon, Microsoft and Meta are expected to spend some $400bn combined on terrestrial data centres in 2026 alone.",
+          "The grid is not keeping up. The IEA estimates that up to a fifth of planned projects risk delay for want of transmission capacity. In Virginia, Dublin and suburban Frankfurt, moratoria and utility queues now stretch past the decade. The result is that hyperscalers have quietly become energy companies that happen to run software, pursuing nuclear-reactor offtake agreements that would have seemed eccentric in 2020.",
+          "Nor is the grid the only obstacle. Local communities have grown resistant to facilities that arrive with promises of tax revenue and leave with the water table. Planning battles in Ireland, the Netherlands and parts of the American south have delayed or killed projects that would otherwise have broken ground years ago. Opposition that was once fragmented is becoming organised.",
+        ],
+      },
+      {
+        subhead: "A sunnier solution",
+        body: [
+          "Orbit, interestingly, solves several of these problems at once. A solar panel in the right low-Earth orbit, more specifically a dawn-to-dusk sun-synchronous one that sits in nearly continuous sunlight, generates up to eight times more energy per panel per year than the equivalent on the ground, according to Google's modelling. Solar irradiance in orbit is also 36% higher than at the surface, and neither weather nor night interferes. This makes it a thermodynamic advantage for chips, where heat can be radiated directly into space, with no need for the vast cooling infrastructure that terrestrial AI campuses require. Land use falls to zero. Planning permission is, for now, not a concept.",
+          "There are also structural advantages that play into strategic rather than strictly economic logic. Space is, at least in principle, jurisdiction-light: a sovereign compute layer that sits outside the patchwork of European, American and Chinese data-protection regimes. Latency for Earth-to-orbit round trips remains a constraint for anything consumer-facing, but the heaviest AI workloads, among them model training, scientific simulation and batch inference, do not require results to return in 20 milliseconds or 200. They care about the cost of compute capacity.",
+        ],
+      },
+      {
+        subhead: "Space-euphoria is not all that simple",
+        body: [
+          "The romance meets the rocket-launch equation. Google's feasibility paper, the most careful public analysis to date, concludes that launch costs to low-Earth orbit would need to fall to roughly $200 per kilogram before orbital compute becomes cost-competitive with a terrestrial data centre on a per-kilowatt basis. Current prices, depending on provider and profile, sit between $1,500 and $2,900. SpaceX's Starship, which is not yet operational at scale, is meant to change this, but would have to reach something like 180 launches a year, a demanding target. Google's own projection for when the economics might arrive is the mid-2030s, which in AI-investment years is several eternities.",
+          "Launch costs are not the only hurdle. Cosmic radiation degrades chips, passive thermal management at data-centre scale remains unproven, and repairing a broken server in orbit is a rather more involved task than dispatching a hardware engineer. The sustainability case, often invoked as the clinching argument, is shakier than advertised. A single re-entering satellite deposits aluminium in the upper atmosphere and thousands of them falling out of orbit each year could measurably affect Earth's albedo. A 2023 FAA report projected that by 2035 debris from large constellations could injure or kill one person every two years, a finding SpaceX disputed but which independent researchers have not dismissed. Orbital slots, like the electromagnetic spectrum, are not infinite commons.",
+        ],
+      },
+    ],
+    gallery: {
+      kicker: "The wager, in four frames",
+      heading: "Neither fantasy nor imminent.",
+      text: "Data centres in space are neither fantasy nor imminent. They are a credible hedge against a ground-based bottleneck that is real, large and arriving fast, but the hedge is contingent on a launch-cost revolution that has been promised before. The strategic case is that the bet is now cheap enough to take seriously. The strategic risk is the one common to large infrastructure everywhere: not whether it works eventually, but whether it works in time and at scale.",
+      images: [
+        {
+          src: "assets/1Inside.avif",
+          title: "Building the hardware",
+          alt: "Engineers at Thales Alenia Space assembling a satellite payload in a cleanroom.",
+        },
+        {
+          src: "assets/2Starcloud_Prototype.webp",
+          title: "First orbital prototype",
+          alt: "A Starcloud prototype satellite alongside a docking module against the curve of Earth.",
+        },
+        {
+          src: "assets/3SC_sattelites.png",
+          title: "A modular constellation",
+          alt: "Rendering of a formation of Starcloud compute satellites connected by optical links.",
+        },
+        {
+          src: "assets/4Starcloud_Vision_Solar_Panels.webp",
+          title: "The 5 GW vision",
+          alt: "A full-scale 5 GW orbital data centre concept with a 4 km solar-panel array.",
+        },
+      ],
+    },
+  },
+
+  actors: {
+    kicker: "Act II",
+    heading: "Actors and strategic positioning in orbital compute.",
+    lede: "The actors that matter are not those building orbital data centres outright, but those assembling the layers from which such a system could emerge. What exists today is not an industry, but a set of adjacent capabilities advancing in parallel.",
+    sections: [
+      {
+        body: [
+          "If orbital compute materialises, it will do so less by deliberate design than by convergence, as these components begin to interact under conditions in which terrestrial constraints become harder to absorb.",
+          "Among companies, the movement is incremental rather than declaratory. Google's Project Suncatcher envisions compact constellations of solar-powered satellites, carrying TPUs and connected by free-space optical links, with the logic being fragmentation rather than replication: modular nodes aimed at workloads for which latency is not binding. In partnership with Planet Labs, two demonstration satellites are slated for launch by early 2027, designed to test TPU performance in the space environment and validate high-bandwidth intersatellite links. What is notable here is structural: the two leading orbital compute efforts are owned by the two largest cloud providers. This is not coincidental. Orbital compute is emerging from within existing hyperscale architectures, not alongside them, which means the firms best positioned to build it are precisely those with the most to gain from escaping terrestrial constraints. Amazon's Project Kuiper fits this picture differently. It is primarily a broadband connectivity network aimed at underserved markets, and framing it as orbital compute infrastructure overstates the case. Its relevance is indirect: it builds the transport layer that a more capable orbital system would eventually need.",
+          "The strategic meaning of these developments, however, is not contained at the level of companies. It lies in how different political economies absorb, or resist, the possibility of a compute layer that is in principle less tied to territory.",
+        ],
+      },
+      {
+        subhead: "The United States",
+        body: [
+          "In the United States, the defining feature is concentration. The same ecosystem hosts the dominant cloud providers, leading semiconductor design firms, and the only launch company currently attempting to compress costs at the required scale. This creates a system in which orbital compute need not be planned as a discrete strategy. It can emerge as a residual response to bottlenecks within an otherwise continuous scaling model.",
+          "It also carries a perceived regulatory advantage: a compute layer in orbit sits more loosely within national data regimes, offering flexibility to firms operating across jurisdictions. That claim is less settled than it appears. GDPR applies based on where data subjects are located and where the controller is established, not where processing physically occurs. The arbitrage is real at the margins, but it is not a clean jurisdictional escape.",
+        ],
+      },
+      {
+        subhead: "China",
+        body: [
+          "China's position is structured less by scaling constraints than by exposure to external control over critical technologies. Its AI and digital strategies have consistently prioritised reducing dependence on foreign semiconductors, cloud services and standards-setting processes. Within this framework, space infrastructure is a strategic domain in its own right.",
+          "The absence of a visible Suncatcher equivalent does not indicate misalignment. China has been developing inter-satellite optical link technology through its Tiandu programme, and CASC has published roadmaps for in-orbit computing capacity. The sequencing differs from the American model, but the direction is consistent: orbital compute as an instrument of sovereign capability rather than cost optimisation.",
+        ],
+      },
+      {
+        subhead: "The European Union",
+        body: [
+          "The European Union operates within a system defined by partial capability and structural dependence. It faces the same terrestrial bottlenecks as the United States — grid congestion, slow permitting and local resistance — but without equivalent control over the firms that define the frontier of AI infrastructure. Its response has focused on areas where sovereignty can be more directly constructed: secure connectivity through the IRIS² constellation, and high-performance computing through EuroHPC.",
+          "Neither addresses orbital compute directly. IRIS² is a connectivity play and EuroHPC has no orbital dimension. The Union's primary constraint is not where compute sits, but who owns it, and orbit does not resolve that.",
+          "What emerges is a set of asymmetrical positions. In the United States, orbital compute is an extension of scale. In China, a potential instrument of autonomy. In Europe, a distant hedge against a dependency that space infrastructure alone cannot fix. The technology remains contingent on cost. Its strategic relevance is already legible in how it maps onto existing distributions of power.",
+        ],
+      },
+    ],
+    map: {
+      kicker: "Orbital compute ecosystems",
+      heading: "Who Builds What, Where",
+      sub: "Public institutions and private firms shaping orbital AI across the three poles.",
+    },
+    regions: [
+      {
+        code: "US",
+        name: "United States",
+        stance: "Scale",
+        approach: "Orbital compute as a residual response to terrestrial bottlenecks — absorbed into existing hyperscale architectures.",
+        publicPlayers: [
+          "NASA",
+          "U.S. Space Force",
+          "DARPA",
+          "FAA Office of Commercial Space (AST)",
+          "NIST",
+        ],
+        privatePlayers: [
+          "Google — Project Suncatcher (with Planet Labs)",
+          "Amazon — Project Kuiper",
+          "SpaceX — Starship / Starlink",
+          "NVIDIA",
+          "Microsoft Azure Space",
+          "Meta",
+        ],
+      },
+      {
+        code: "CN",
+        name: "China",
+        stance: "Autonomy",
+        approach: "Orbital compute as an instrument of sovereign capability — insulated from foreign semiconductors, cloud and standards.",
+        publicPlayers: [
+          "CNSA (China National Space Administration)",
+          "CASC (China Aerospace Science & Technology)",
+          "Chinese Academy of Sciences — Tiandu programme",
+          "MIIT",
+        ],
+        privatePlayers: [
+          "Alibaba Cloud",
+          "Huawei Cloud",
+          "GalaxySpace",
+          "Landspace",
+          "CAS Space",
+        ],
+      },
+      {
+        code: "EU",
+        name: "European Union",
+        stance: "Sovereignty",
+        approach: "Distant hedge against dependency — focus on secure connectivity and sovereign compute rather than orbital scale.",
+        publicPlayers: [
+          "European Commission (DG DEFIS, DG CNECT)",
+          "ESA",
+          "EuroHPC Joint Undertaking",
+          "EUSPA",
+        ],
+        privatePlayers: [
+          "Airbus Defence & Space",
+          "Thales Alenia Space",
+          "ArianeGroup",
+          "OVHcloud",
+          "IRIS² industrial consortium",
+        ],
+      },
+    ],
+  },
+
+  governance: {
+    altitude: "36,000 km · Geostationary",
+    kicker: "Act III",
+    heading: "Governance: The Treaty Landscape & Regulatory Gaps.",
+    lede: "Space law was written for astronauts and satellites. Not for AI training runs.",
+    intro: [
+      "The frameworks that govern outer space were written for a different era of competition. The Outer Space Treaty dates to 1967 and the Liability Convention to 1972. Their authors were concerned with states launching rockets, not private firms deploying autonomous systems that make consequential decisions without human authorisation. The result is a governance architecture that was never designed for the technology it now needs to address.",
+      "The most fundamental problem is jurisdictional. Space law is state-centric by design: responsibility flows through national governments, which are expected to authorise and supervise their private operators. This worked tolerably well when the actors were national space agencies. It works poorly when a cloud-based AI system, developed by a private company, launched by a contractor and operating across multiple orbital regimes, causes harm. Attribution is difficult to establish because no treaty assigns legal responsibility to an algorithm. Enforcement is impractical because no body has meaningful authority over a system that exists, physically and legally, outside any national territory.",
+      "AI governance, meanwhile, has developed on an entirely separate track. The UN frameworks that address artificial intelligence — among them the Global Digital Compact and the Global Partnership on AI — are voluntary instruments oriented toward terrestrial applications. The EU AI Act is binding, but its jurisdictional reach above the atmosphere is legally ambiguous and practically untested. The two bodies of law were never designed to speak to each other, and there is no institutional mechanism that currently compels them to.",
+      "What emerges is a cumulative gap rather than a single failure. Space law does not account for AI and AI regulation does not account for space. The matrix below maps the existing treaty landscape against the specific regulatory gaps that orbital AI systems expose, and assesses where the structural failures are most acute.",
+    ],
+    tableHeading: "Overview of AI treaties and Frameworks: Who, What, Why",
+    tableSubhead:
+      "Key international frameworks and their limitations in governing autonomous AI and its applications in space.",
+    groups: [
+      {
+        label: "UN Space Treaties",
+        treaties: [
+          {
+            name: "Outer Space Treaty",
+            meta: "1967 · 114 parties",
+            scope:
+              "Governs state use of outer space; bans weapons of mass destruction; prohibits national appropriation of celestial bodies.",
+            relevance:
+              "States remain responsible for national space activities, including those by private actors. Bans on weaponisation may apply to autonomous AI weapons in orbit.",
+            gaps: [
+              "No definition of autonomous or AI-driven 'space activity'",
+              "State responsibility unclear when AI acts without human authorisation",
+              "Private-sector AI operations not directly addressed",
+              "No obligation for algorithmic transparency",
+            ],
+            severity: "critical",
+          },
+          {
+            name: "Liability Convention",
+            meta: "1972 · 98 parties",
+            scope:
+              "Establishes liability of launching states for damage caused by space objects. Fault-based liability for damage beyond Earth's surface.",
+            relevance:
+              "Primary legal mechanism for assigning blame when a space object causes harm — but written for human-operated hardware.",
+            gaps: [
+              "Fault attribution near-impossible for autonomous AI decisions",
+              "No provision for AI-caused cyberattacks or data harm",
+              "Multi-actor liability (developer, operator, AI) unresolved",
+              "'Launching state' concept doesn't map to cloud-based AI",
+            ],
+            severity: "critical",
+          },
+          {
+            name: "Registration Convention",
+            meta: "1976 · 73 parties",
+            scope:
+              "Requires states to register space objects with the UN Secretary-General and maintain national registries.",
+            relevance:
+              "AI-enabled satellites must still be registered, providing a baseline traceability mechanism.",
+            gaps: [
+              "No requirement to disclose AI capabilities or autonomy level",
+              "Software updates changing AI behaviour post-launch untracked",
+              "Mega-constellations strain the registry system",
+            ],
+            severity: "significant",
+          },
+          {
+            name: "Rescue Agreement",
+            meta: "1968 · 98 parties",
+            scope:
+              "Obliges states to rescue astronauts and return space objects. Focuses on personnel safety and state cooperation.",
+            relevance:
+              "Relevant when AI systems are used in crewed missions or affect crew safety decisions.",
+            gaps: [
+              "Silent on AI decision-making in life-critical crewed systems",
+              "No framework for human override of autonomous spacecraft",
+            ],
+            severity: "significant",
+          },
+        ],
+      },
+      {
+        label: "Arms Control & Security",
+        treaties: [
+          {
+            name: "Partial Nuclear Test Ban Treaty",
+            meta: "1963 · 126 parties",
+            scope:
+              "Bans nuclear tests in the atmosphere, outer space and underwater.",
+            relevance:
+              "Indirectly constrains AI-directed nuclear weapons in space, but was not designed for autonomous systems.",
+            gaps: [
+              "Does not address AI-automated launch or targeting decisions",
+              "No requirement for human authorisation in nuclear command chains",
+            ],
+            severity: "critical",
+          },
+        ],
+      },
+      {
+        label: "Data, Digital & Emerging Frameworks",
+        treaties: [
+          {
+            name: "EU AI Act",
+            meta: "2024 · EU member states",
+            scope:
+              "First binding AI regulation; classifies AI systems by risk level and sets conformity, transparency and oversight requirements.",
+            relevance:
+              "Applies to AI systems marketed or used in the EU; space operators with an EU nexus must comply.",
+            gaps: [
+              "Jurisdiction in orbit remains legally ambiguous",
+              "Scope for AI operating beyond Earth's atmosphere unclear",
+              "No specific provisions for autonomous spacecraft or satellites",
+              "Enforcement beyond Earth's surface impractical",
+            ],
+            severity: "significant",
+          },
+          {
+            name: "GDPR",
+            meta: "2018 · EU + EEA",
+            scope: "Regulates processing of personal data of EU residents.",
+            relevance:
+              "Applies to Earth-observation AI that captures personal data (e.g. imagery identifying individuals).",
+            gaps: [
+              "Resolution thresholds for personal data from orbit undefined",
+              "AI inference from satellite data not explicitly covered",
+              "Cross-border data flows from space not addressed",
+            ],
+            severity: "significant",
+          },
+          {
+            name: "ITU Radio Regulations",
+            meta: "Ongoing · ITU members",
+            scope:
+              "Allocates radio spectrum and orbital slots; coordinates satellite frequency use to prevent interference.",
+            relevance:
+              "AI-driven satellite constellations must comply; coordination required for spectrum use.",
+            gaps: [
+              "Does not govern AI-driven dynamic spectrum sharing",
+              "Mega-constellation filings overwhelm the ITU coordination process",
+              "No standards for AI interference avoidance between operators",
+            ],
+            severity: "significant",
+          },
+        ],
+      },
+      {
+        label: "Soft Law & Guidelines (Non-binding)",
+        treaties: [
+          {
+            name: "UN COPUOS LTS Guidelines",
+            meta: "2019 · Voluntary",
+            scope:
+              "21 voluntary guidelines for sustainable use of outer space, covering space debris, safety and international cooperation.",
+            relevance:
+              "Guidelines on space situational awareness and collision avoidance are increasingly AI-relevant.",
+            gaps: [
+              "Entirely voluntary — no enforcement mechanism",
+              "No specific guidance on AI or autonomous systems",
+              "Adoption uneven across spacefaring nations",
+            ],
+            severity: "critical",
+          },
+          {
+            name: "UN AI Governance Frameworks (GDC / GPAI)",
+            meta: "2024–2025 · Voluntary",
+            scope:
+              "Global Digital Compact and Global Partnership on AI seek to align AI development with human rights and sustainable development goals.",
+            relevance:
+              "Establishes norms for responsible AI that, in principle, extend to space applications.",
+            gaps: [
+              "No legally binding obligations",
+              "Space-specific applications not addressed",
+              "No mechanism to connect AI governance to space law bodies",
+            ],
+            severity: "critical",
+          },
+        ],
+      },
+    ],
+    note: "The Moon Agreement (1979) and Export Control Regimes (MTCR, Wassenaar) also carry partial relevance but have limited ratification or narrow technical scope. No treaty currently contains explicit, binding provisions specifically governing AI or autonomous decision-making in outer space. All coverage is derivative — applied by analogy from frameworks designed for a pre-AI era. Obligations are state-centric, and regulation of non-state or autonomous actors is indirect or non-existent.",
+  },
+
+  futures: {
+    altitude: "Beyond",
+    kicker: "Act IV",
+    heading: "What This Means for the Geopolitics of AI.",
+    lede: "Three geopolitical shifts are already underway. None of them will wait for a treaty.",
+    geopolitics: {
+      intro: [
+        "The gap between space law not accounting for AI and AI regulation not accounting for space is not a neutral absence. It is an allocation of power. Where binding law is absent, the first actor to operate sets the terms for later practice. That allocation is already taking shape in orbit: spectrum filings arrive faster than the ITU can process them, coordination rules emerge through bilateral arrangements rather than treaty, and contracts between commercial satellite operators and intelligence agencies carry terms that are routinely classified.",
+        "Three geopolitical shifts are already underway.",
+      ],
+      shifts: [
+        {
+          title: "The legal regime is running out of road.",
+          body: "The Outer Space Treaty forbids states from claiming sovereignty over orbit or the Moon, but says nothing about storing data, running a training cluster, or owning the software that does either. The emerging logic is therefore one of de facto control through use: a company that saturates a useful slice of orbit has effectively claimed it, a quiet appropriation by other means that the treaty never anticipated. The regime bans formal sovereignty but does not regulate functional control.",
+          indicator: "Orbital slot filings. When a single operator\u2019s constellation filings begin to foreclose coordination options for later entrants, the legal fiction of the commons will have ended in practice before anyone has said so in law.",
+        },
+        {
+          title: "Who writes the rules when the treaty bodies cannot.",
+          body: "The Artemis Accords, a non-binding US-led framework, now have 62 state signatories and operational norms that function in practice as law: safety zones, resource-extraction rights, reporting requirements. The International Lunar Research Station, the China-Russia counterpart, has a different signatory list and a different set of norms. Neither is a treaty. Both are soft-law coalitions whose standards bind participants in practice, and states without space programmes of their own are being asked to choose between two rule-sets that neither of them wrote.",
+          indicator: "Which framework governs the first contested lunar resource extraction. That moment, more than any diplomatic declaration, will reveal whether the Accords or the ILRS has produced the operative norm.",
+        },
+        {
+          title: "The public/private distinction has collapsed.",
+          body: "Article VI of the Outer Space Treaty makes each state responsible for the activities of its \u201Cnon-governmental entities,\u201D a category that presumed a visible distinction between public and private actors. That distinction has collapsed, and differently in each major political economy. In the United States, SpaceX\u2019s Starshield division operates a classified variant of Starlink for American intelligence agencies under contract with the National Reconnaissance Office: nominally private, functionally a state capability. In China, CASC and CASIC operate within a system whose military coordination was consolidated under the PLA Aerospace Force, established directly under the Central Military Commission in April 2024: nominally commercial, with a chain of command that is not. In Europe, Thales Alenia Space and Airbus are the principal industrial partners for IRIS\u00B2, directed by a strategic-autonomy doctrine that is anything but private in intent.",
+          indicator: "Liability attribution. The first serious incident involving a nominally private orbital system acting under classified state direction will expose whether Article VI can bear the weight placed on it, or whether the entire framework of state responsibility in space requires reconstruction from the ground up.",
+        },
+      ],
+      closer: "These three shifts are neither coordinated nor reversible. By 2030, when the ISS is retired, when Tiangong is the only government-run outpost in low-Earth orbit, and when Chang\u2019e-8 has tested Chinese extraction of lunar water ice, the questions of who governs AI in space and on whose terms will already have been answered. Those answers will not have come from treaty negotiation. They will have come from what the operators did in the meantime.",
+    },
+    closer: {
+      line: "The rocket has already left the pad.",
+      cta: "The debate has not.",
+    },
+  },
+};

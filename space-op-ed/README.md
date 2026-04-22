@@ -4,6 +4,16 @@ An interactive, scroll-driven op-ed on the geopolitics of AI data centres in spa
 
 The reader does not read an article. They **ascend** — from a launch pad through low Earth orbit, past geostationary, and out into deep space. Each altitude band is one talking point. The background, sky, stars, Earth curvature, and rocket position all respond to a single scroll-progress value.
 
+## Course hub (Sciences Po)
+
+If you use this repo to develop but submit to [**geopolitics-ai-scpo-hub**](https://github.com/AABK6/geopolitics-ai-scpo-hub) as **Group 2**, keep a copy under `projects/group-2/` (entry file `projects/group-2/index.html`). From the monorepo root:
+
+```bash
+rsync -a --delete --exclude='.DS_Store' space-op-ed/ projects/group-2/
+```
+
+Then follow **`projects/group-2/README.md`** for fork → PR instructions (change **only** `projects/group-2/` in the hub).
+
 ## What this folder is
 
 A fully self-contained static site. No build step, no bundler, no npm. Double-click `index.html` or serve the folder with any static server and it works.
