@@ -675,6 +675,7 @@
 
             <p class="act-para" data-bind="whyNow.sections.0.body.1"></p>
             <p class="act-para" data-bind="whyNow.sections.0.body.2"></p>
+            <p class="act-para" data-bind="whyNow.sections.0.body.3"></p>
 
             <!-- Section 2: A sunnier solution -->
             <h3 class="act-subhead" data-bind="whyNow.sections.1.subhead"></h3>
@@ -728,20 +729,53 @@
             <p class="scene-lede has-dropcap" data-bind="actors.lede"></p>
           </header>
 
-          <div class="actors" data-bind-list="actors.cards" data-template="actor">
-            <template data-template-id="actor">
-              <article class="actor-card">
-                <div class="actor-card-head">
-                  <span class="actor-code" data-field="code"></span>
-                  <h3 class="actor-name" data-field="actor"></h3>
-                </div>
-                <p class="actor-stance" data-field="stance"></p>
-                <ul class="actor-projects" data-field-list="projects"></ul>
-                <p class="actor-wants-label">What they want</p>
-                <p class="actor-wants" data-field="wants"></p>
-              </article>
-            </template>
-          </div>
+          <article class="act-article">
+            <p class="act-para" data-bind="actors.sections.0.body.0"></p>
+            <p class="act-para" data-bind="actors.sections.0.body.1"></p>
+            <p class="act-para" data-bind="actors.sections.0.body.2"></p>
+
+            <h3 class="act-subhead" data-bind="actors.sections.1.subhead"></h3>
+            <p class="act-para" data-bind="actors.sections.1.body.0"></p>
+            <p class="act-para" data-bind="actors.sections.1.body.1"></p>
+
+            <h3 class="act-subhead" data-bind="actors.sections.2.subhead"></h3>
+            <p class="act-para" data-bind="actors.sections.2.body.0"></p>
+            <p class="act-para" data-bind="actors.sections.2.body.1"></p>
+
+            <h3 class="act-subhead" data-bind="actors.sections.3.subhead"></h3>
+            <p class="act-para" data-bind="actors.sections.3.body.0"></p>
+            <p class="act-para" data-bind="actors.sections.3.body.1"></p>
+            <p class="act-para act-para--closer" data-bind="actors.sections.3.body.2"></p>
+          </article>
+
+          <!-- Regional infomedia: US / China / EU ecosystems -->
+          <section class="orbital-map" aria-label="Regional orbital-compute ecosystems">
+            <header class="map-head">
+              <p class="map-kicker" data-bind="actors.map.kicker"></p>
+              <h3 class="map-heading" data-bind="actors.map.heading"></h3>
+              <p class="map-sub" data-bind="actors.map.sub"></p>
+            </header>
+            <div class="map-grid" data-bind-list="actors.regions" data-template="region">
+              <template data-template-id="region">
+                <article class="region-card">
+                  <header class="region-head">
+                    <span class="region-code" data-field="code"></span>
+                    <h4 class="region-name" data-field="name"></h4>
+                  </header>
+                  <p class="region-stance" data-field="stance"></p>
+                  <p class="region-approach" data-field="approach"></p>
+                  <div class="region-block">
+                    <h5 class="region-label">Public institutions</h5>
+                    <ul class="region-list" data-field-list="publicPlayers"></ul>
+                  </div>
+                  <div class="region-block">
+                    <h5 class="region-label">Private players</h5>
+                    <ul class="region-list" data-field-list="privatePlayers"></ul>
+                  </div>
+                </article>
+              </template>
+            </div>
+          </section>
         </div>
       </section>
 
@@ -760,26 +794,143 @@
             <p class="scene-lede has-dropcap" data-bind="governance.lede"></p>
           </header>
 
-          <ul class="treaties" data-bind-list="governance.treaties" data-template="treaty">
-            <template data-template-id="treaty">
-              <li class="treaty">
-                <span class="treaty-year" data-field="year"></span>
-                <span class="treaty-name" data-field="name"></span>
-              </li>
-            </template>
-          </ul>
+          <article class="act-article">
+            <p class="act-para" data-bind="governance.intro.0"></p>
+            <p class="act-para" data-bind="governance.intro.1"></p>
+            <p class="act-para" data-bind="governance.intro.2"></p>
+            <p class="act-para" data-bind="governance.intro.3"></p>
+          </article>
 
-          <div class="gaps" data-bind-list="governance.gaps" data-template="gap">
-            <template data-template-id="gap">
-              <article class="gap-card">
-                <div class="gap-crack" aria-hidden="true"></div>
-                <h3 class="gap-title" data-field="title"></h3>
-                <p class="gap-body" data-field="body"></p>
-              </article>
-            </template>
-          </div>
+          <!-- Treaty matrix: grouped cards, each with severity badge -->
+          <section class="gov-matrix" aria-label="Treaty and framework matrix">
+            <header class="matrix-head">
+              <p class="matrix-kicker">Treaty landscape</p>
+              <h3 class="matrix-heading" data-bind="governance.tableHeading"></h3>
+              <p class="matrix-sub" data-bind="governance.tableSubhead"></p>
+              <ul class="matrix-legend" aria-label="Severity legend">
+                <li><span class="sev-dot sev-dot--critical" aria-hidden="true"></span>Critical gap</li>
+                <li><span class="sev-dot sev-dot--significant" aria-hidden="true"></span>Significant gap</li>
+              </ul>
+            </header>
 
-          <p class="governance-closer" data-bind="governance.closer"></p>
+            <details class="gov-group">
+              <summary class="gov-group-label">
+                <span class="gg-chevron" aria-hidden="true"></span>
+                <span class="gg-label" data-bind="governance.groups.0.label"></span>
+                <span class="gg-count" data-bind="governance.groups.0.count"></span>
+              </summary>
+              <div class="gov-grid" data-bind-list="governance.groups.0.treaties" data-template="tcard">
+                <template data-template-id="tcard">
+                  <article class="treaty-card" data-field-attr="severity|data-severity">
+                    <header class="tc-head">
+                      <h5 class="tc-name" data-field="name"></h5>
+                      <span class="tc-meta" data-field="meta"></span>
+                      <span class="tc-severity"></span>
+                    </header>
+                    <dl class="tc-body">
+                      <dt>Original scope</dt>
+                      <dd data-field="scope"></dd>
+                      <dt>Relevance to AI in space</dt>
+                      <dd data-field="relevance"></dd>
+                    </dl>
+                    <div class="tc-gaps">
+                      <h6 class="tc-gaps-label">Regulatory gaps</h6>
+                      <ul class="tc-gaps-list" data-field-list="gaps"></ul>
+                    </div>
+                  </article>
+                </template>
+              </div>
+            </details>
+
+            <details class="gov-group">
+              <summary class="gov-group-label">
+                <span class="gg-chevron" aria-hidden="true"></span>
+                <span class="gg-label" data-bind="governance.groups.1.label"></span>
+                <span class="gg-count" data-bind="governance.groups.1.count"></span>
+              </summary>
+              <div class="gov-grid" data-bind-list="governance.groups.1.treaties" data-template="tcard2">
+                <template data-template-id="tcard2">
+                  <article class="treaty-card" data-field-attr="severity|data-severity">
+                    <header class="tc-head">
+                      <h5 class="tc-name" data-field="name"></h5>
+                      <span class="tc-meta" data-field="meta"></span>
+                      <span class="tc-severity"></span>
+                    </header>
+                    <dl class="tc-body">
+                      <dt>Original scope</dt>
+                      <dd data-field="scope"></dd>
+                      <dt>Relevance to AI in space</dt>
+                      <dd data-field="relevance"></dd>
+                    </dl>
+                    <div class="tc-gaps">
+                      <h6 class="tc-gaps-label">Regulatory gaps</h6>
+                      <ul class="tc-gaps-list" data-field-list="gaps"></ul>
+                    </div>
+                  </article>
+                </template>
+              </div>
+            </details>
+
+            <details class="gov-group">
+              <summary class="gov-group-label">
+                <span class="gg-chevron" aria-hidden="true"></span>
+                <span class="gg-label" data-bind="governance.groups.2.label"></span>
+                <span class="gg-count" data-bind="governance.groups.2.count"></span>
+              </summary>
+              <div class="gov-grid" data-bind-list="governance.groups.2.treaties" data-template="tcard3">
+                <template data-template-id="tcard3">
+                  <article class="treaty-card" data-field-attr="severity|data-severity">
+                    <header class="tc-head">
+                      <h5 class="tc-name" data-field="name"></h5>
+                      <span class="tc-meta" data-field="meta"></span>
+                      <span class="tc-severity"></span>
+                    </header>
+                    <dl class="tc-body">
+                      <dt>Original scope</dt>
+                      <dd data-field="scope"></dd>
+                      <dt>Relevance to AI in space</dt>
+                      <dd data-field="relevance"></dd>
+                    </dl>
+                    <div class="tc-gaps">
+                      <h6 class="tc-gaps-label">Regulatory gaps</h6>
+                      <ul class="tc-gaps-list" data-field-list="gaps"></ul>
+                    </div>
+                  </article>
+                </template>
+              </div>
+            </details>
+
+            <details class="gov-group">
+              <summary class="gov-group-label">
+                <span class="gg-chevron" aria-hidden="true"></span>
+                <span class="gg-label" data-bind="governance.groups.3.label"></span>
+                <span class="gg-count" data-bind="governance.groups.3.count"></span>
+              </summary>
+              <div class="gov-grid" data-bind-list="governance.groups.3.treaties" data-template="tcard4">
+                <template data-template-id="tcard4">
+                  <article class="treaty-card" data-field-attr="severity|data-severity">
+                    <header class="tc-head">
+                      <h5 class="tc-name" data-field="name"></h5>
+                      <span class="tc-meta" data-field="meta"></span>
+                      <span class="tc-severity"></span>
+                    </header>
+                    <dl class="tc-body">
+                      <dt>Original scope</dt>
+                      <dd data-field="scope"></dd>
+                      <dt>Relevance to AI in space</dt>
+                      <dd data-field="relevance"></dd>
+                    </dl>
+                    <div class="tc-gaps">
+                      <h6 class="tc-gaps-label">Regulatory gaps</h6>
+                      <ul class="tc-gaps-list" data-field-list="gaps"></ul>
+                    </div>
+                  </article>
+                </template>
+              </div>
+            </details>
+
+            <p class="matrix-note" data-bind="governance.note"></p>
+          </section>
         </div>
       </section>
 

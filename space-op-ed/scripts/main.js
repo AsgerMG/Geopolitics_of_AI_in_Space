@@ -10,7 +10,6 @@
 import { copy } from "../content/copy.js";
 import { ScrollEngine } from "./util/scroll.js";
 import { prefersReducedMotion, onReducedMotionChange } from "./util/reducedMotion.js";
-import { clamp, smoothstep, remap } from "./util/lerp.js";
 import { Stage } from "./stage.js";
 import { createLiftoffScene } from "./scenes/liftoff.js";
 import { createWhyNowScene } from "./scenes/whyNow.js";
@@ -72,6 +71,20 @@ function bindCopy(root, data) {
         clone.textContent = String(item);
       }
 
+      // data-field-attr="key|attrName" → write item[key] to attrName on the element.
+      // Applies to the clone root and descendants. Used to drive CSS selectors
+      // (e.g. severity="critical" → [data-severity="critical"]).
+      const applyFieldAttr = (fEl) => {
+        const spec = fEl.getAttribute("data-field-attr");
+        if (!spec) return;
+        const [key, attrName] = spec.split("|");
+        if (!key || !attrName) return;
+        const v = item?.[key];
+        if (v != null) fEl.setAttribute(attrName, String(v));
+      };
+      if (clone.hasAttribute("data-field-attr")) applyFieldAttr(clone);
+      clone.querySelectorAll("[data-field-attr]").forEach(applyFieldAttr);
+
       container.appendChild(clone);
     });
   });
@@ -106,16 +119,21 @@ function buildTextFallback(data) {
     },
     {
       heading: data.actors.heading,
-      body: data.actors.lede,
-      items: data.actors.cards.map(
-        (c) => `${c.actor}: ${c.stance} Projects: ${c.projects.join("; ")}. Wants: ${c.wants}`
-      ),
+      body: [
+        data.actors.lede,
+        ...data.actors.sections.flatMap((s) => s.body || []),
+      ].join(" "),
     },
     {
       heading: data.governance.heading,
-      body: data.governance.lede,
-      items: data.governance.gaps.map((g) => `${g.title} — ${g.body}`),
-      closer: data.governance.closer,
+      body: [data.governance.lede, ...(data.governance.intro || [])].join(" "),
+      items: (data.governance.groups || []).flatMap((g) =>
+        g.treaties.map(
+          (t) =>
+            `${t.name} (${t.meta}) — ${t.relevance} Gaps: ${t.gaps.join("; ")}`
+        )
+      ),
+      closer: data.governance.note,
     },
     {
       heading: data.futures.heading,
@@ -209,22 +227,17 @@ function boot() {
   // 6. Scroll engine
   const track = document.getElementById("track");
 
-  const FADE = 0.015;
-
   const engine = new ScrollEngine({
     track,
     scenes: sceneEls.map(({ id, el, range }) => ({ id, el, range })),
     onTick: ({ progress, perScene }) => {
       stage.update(progress);
+      // Scene-inner opacity is controlled by CSS default (1). Ranges are
+      // hand-picked percentages and no longer reflect where content falls
+      // visually now that the articles are long-form, so JS-driven fades
+      // would hide text that's already in view.
       for (let i = 0; i < sceneEls.length; i++) {
-        const s = sceneEls[i];
-        const sub = perScene[i].sub;
-
-        const [a] = s.range;
-        const fadeIn = a === 0 ? 1 : smoothstep(remap(progress, a - FADE, a + FADE, 0, 1));
-        if (s.inner) s.inner.style.setProperty("--scene-active", fadeIn.toFixed(3));
-
-        s.ctrl.update(sub, progress);
+        sceneEls[i].ctrl.update(perScene[i].sub, progress);
       }
     },
   });
