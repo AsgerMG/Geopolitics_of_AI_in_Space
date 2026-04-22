@@ -137,9 +137,16 @@ function buildTextFallback(data) {
     },
     {
       heading: data.futures.heading,
-      body: data.futures.lede,
-      items: data.futures.scenarios.map((s) => `${s.title} — ${s.body}`),
-      questions: data.futures.openQuestions.items,
+      body: [
+        data.futures.lede,
+        ...(data.futures.geopolitics?.intro || []),
+        ...(data.futures.geopolitics?.shifts || []).map(
+          (s) => `${s.title} ${s.body}`
+        ),
+        data.futures.geopolitics?.closer,
+      ]
+        .filter(Boolean)
+        .join(" "),
       closer: `${data.futures.closer.line} ${data.futures.closer.cta}`,
     },
   ];

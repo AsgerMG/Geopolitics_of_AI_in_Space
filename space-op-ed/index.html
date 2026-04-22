@@ -949,32 +949,27 @@
             <p class="scene-lede has-dropcap" data-bind="futures.lede"></p>
           </header>
 
-          <div class="scenarios" data-bind-list="futures.scenarios" data-template="scenario">
-            <template data-template-id="scenario">
-              <article class="scenario">
-                <span class="scenario-n" data-field="n"></span>
-                <h3 class="scenario-title" data-field="title"></h3>
-                <p class="scenario-body" data-field="body"></p>
-              </article>
-            </template>
-          </div>
+          <article class="act-article">
+            <p class="act-para" data-bind="futures.geopolitics.intro.0"></p>
+            <p class="act-para" data-bind="futures.geopolitics.intro.1"></p>
 
-          <section class="open-questions">
-            <h3 class="oq-heading" data-bind="futures.openQuestions.heading"></h3>
-            <ol class="oq-list" data-bind-list="futures.openQuestions.items" data-template="oq">
-              <template data-template-id="oq">
-                <li class="oq-item" data-field="self"></li>
+            <ol class="geo-shifts" data-bind-list="futures.geopolitics.shifts" data-template="geoshift">
+              <template data-template-id="geoshift">
+                <li class="geo-shift">
+                  <h4 class="geo-shift-title" data-field="title"></h4>
+                  <p class="geo-shift-body" data-field="body"></p>
+                  <p class="geo-shift-indicator" data-field="indicator"></p>
+                </li>
               </template>
             </ol>
-          </section>
+
+            <p class="act-para act-para--closer" data-bind="futures.geopolitics.closer"></p>
+          </article>
 
           <footer class="closer">
             <p class="closer-line" data-bind="futures.closer.line"></p>
             <p class="closer-cta" data-bind="futures.closer.cta"></p>
-            <p class="colophon">
-              <span data-bind="meta.author"></span> ·
-              <span data-bind="meta.dateline"></span>
-            </p>
+            <p class="colophon">Last edited: 22/04/2026</p>
           </footer>
         </div>
       </section>

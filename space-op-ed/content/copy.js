@@ -340,38 +340,31 @@ export const copy = {
   futures: {
     altitude: "Beyond",
     kicker: "Act IV",
-    heading: "If This Plays Out.",
-    lede: "Four ways the world changes if orbital compute becomes real.",
-    scenarios: [
-      {
-        n: "01",
-        title: "Compute sovereignty redraws alliances",
-        body: "Countries choose blocs by which orbital compute they can legally use — not by geography or trade.",
-      },
-      {
-        n: "02",
-        title: "A new export-control frontier",
-        body: "Controls pivot from chips-on-ships to chips-in-orbit. Launch manifests become strategic documents.",
-      },
-      {
-        n: "03",
-        title: "Private operators as quasi-states",
-        body: "A handful of launch and compute firms hold capabilities only treaties used to hold. They negotiate. They refuse.",
-      },
-      {
-        n: "04",
-        title: "AI governance fragments along orbital lines",
-        body: "Rules end at the Kármán line. Above it, the strongest operator writes the defaults — and the rest of the world lives with them.",
-      },
-    ],
-    openQuestions: {
-      heading: "Open Questions",
-      items: [
-        "Who has standing to object when a private operator relocates compute to orbit to escape a specific jurisdiction?",
-        "Does an AI model trained in orbit inherit any state's obligations — or none?",
-        "What is the minimum treaty language that would actually bind orbital compute?",
-        "If the cost curve breaks, does terrestrial AI regulation become unenforceable overnight?",
+    heading: "What This Means for the Geopolitics of AI.",
+    lede: "Three geopolitical shifts are already underway. None of them will wait for a treaty.",
+    geopolitics: {
+      intro: [
+        "The gap between space law not accounting for AI and AI regulation not accounting for space is not a neutral absence. It is an allocation of power. Where binding law is absent, the first actor to operate sets the terms for later practice. That allocation is already taking shape in orbit: spectrum filings arrive faster than the ITU can process them, coordination rules emerge through bilateral arrangements rather than treaty, and contracts between commercial satellite operators and intelligence agencies carry terms that are routinely classified.",
+        "Three geopolitical shifts are already underway.",
       ],
+      shifts: [
+        {
+          title: "The legal regime is running out of road.",
+          body: "The Outer Space Treaty forbids states from claiming sovereignty over orbit or the Moon, but says nothing about storing data, running a training cluster, or owning the software that does either. The emerging logic is therefore one of de facto control through use: a company that saturates a useful slice of orbit has effectively claimed it, a quiet appropriation by other means that the treaty never anticipated. The regime bans formal sovereignty but does not regulate functional control.",
+          indicator: "Orbital slot filings. When a single operator\u2019s constellation filings begin to foreclose coordination options for later entrants, the legal fiction of the commons will have ended in practice before anyone has said so in law.",
+        },
+        {
+          title: "Who writes the rules when the treaty bodies cannot.",
+          body: "The Artemis Accords, a non-binding US-led framework, now have 62 state signatories and operational norms that function in practice as law: safety zones, resource-extraction rights, reporting requirements. The International Lunar Research Station, the China-Russia counterpart, has a different signatory list and a different set of norms. Neither is a treaty. Both are soft-law coalitions whose standards bind participants in practice, and states without space programmes of their own are being asked to choose between two rule-sets that neither of them wrote.",
+          indicator: "Which framework governs the first contested lunar resource extraction. That moment, more than any diplomatic declaration, will reveal whether the Accords or the ILRS has produced the operative norm.",
+        },
+        {
+          title: "The public/private distinction has collapsed.",
+          body: "Article VI of the Outer Space Treaty makes each state responsible for the activities of its \u201Cnon-governmental entities,\u201D a category that presumed a visible distinction between public and private actors. That distinction has collapsed, and differently in each major political economy. In the United States, SpaceX\u2019s Starshield division operates a classified variant of Starlink for American intelligence agencies under contract with the National Reconnaissance Office: nominally private, functionally a state capability. In China, CASC and CASIC operate within a system whose military coordination was consolidated under the PLA Aerospace Force, established directly under the Central Military Commission in April 2024: nominally commercial, with a chain of command that is not. In Europe, Thales Alenia Space and Airbus are the principal industrial partners for IRIS\u00B2, directed by a strategic-autonomy doctrine that is anything but private in intent.",
+          indicator: "Liability attribution. The first serious incident involving a nominally private orbital system acting under classified state direction will expose whether Article VI can bear the weight placed on it, or whether the entire framework of state responsibility in space requires reconstruction from the ground up.",
+        },
+      ],
+      closer: "These three shifts are neither coordinated nor reversible. By 2030, when the ISS is retired, when Tiangong is the only government-run outpost in low-Earth orbit, and when Chang\u2019e-8 has tested Chinese extraction of lunar water ice, the questions of who governs AI in space and on whose terms will already have been answered. Those answers will not have come from treaty negotiation. They will have come from what the operators did in the meantime.",
     },
     closer: {
       line: "The rocket has already left the pad.",
