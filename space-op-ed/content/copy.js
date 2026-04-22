@@ -11,8 +11,8 @@ export const copy = {
   },
 
   liftoff: {
-    kicker: "An op-ed",
-    title: "The Next Frontier of AI\nIsn't a Model. It's an Orbit.",
+    kicker: "Geopolitics of Artificial Intelligence — Space & Datacenters",
+    title: "The Next Frontier of AI\nMay Not Be Trained on Earth.",
     subtitle:
       "Within a decade, the most consequential compute on Earth may not be on Earth at all.",
     scrollHint: "Scroll to launch",
