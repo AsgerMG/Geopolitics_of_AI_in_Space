@@ -376,18 +376,18 @@ export const copy = {
       shifts: [
         {
           title: "The legal regime is running out of road.",
-          body: "The Outer Space Treaty forbids states from claiming sovereignty over orbit or the Moon, but says nothing about storing data, running a training cluster, or owning the software that does either. The emerging logic is therefore one of de facto control through use: a company that saturates a useful slice of orbit has effectively claimed it, a quiet appropriation by other means that the treaty never anticipated. The regime bans formal sovereignty but does not regulate functional control.",
-          indicator: "Orbital slot filings. When a single operator\u2019s constellation filings begin to foreclose coordination options for later entrants, the legal fiction of the commons will have ended in practice before anyone has said so in law.",
+          body: "The Outer Space Treaty forbids states from claiming sovereignty over orbit or the Moon, but says nothing about storing data, running a training cluster, or owning the software that does either. The emerging logic is one of de facto control through use: a company that saturates a useful slice of orbit has effectively claimed it, a quiet appropriation by other means that the treaty never anticipated. The treaty regime bans formal sovereignty but does not regulate functional control.",
+          indicator: "The indicator to watch is orbital filings, applications submitted to the ITU to claim slices of orbit. And that indicator has already begun to tip. SpaceX has roughly 7,000 Starlink satellites in orbit and applications for 30,000 more under its Gen2 system. China\u2019s Guowang and Qianfan constellations, filed in response, account for another 27,000 between them. These satellites don\u2019t even need to launch. The filings alone are enough to lock other companies out of the same slices of orbit. Thus, the legal fiction of the commons is ending in practice before anyone has said so in law.",
         },
         {
           title: "Who writes the rules when the treaty bodies cannot.",
-          body: "The Artemis Accords, a non-binding US-led framework, now have 62 state signatories and operational norms that function in practice as law: safety zones, resource-extraction rights, reporting requirements. The International Lunar Research Station, the China-Russia counterpart, has a different signatory list and a different set of norms. Neither is a treaty. Both are soft-law coalitions whose standards bind participants in practice, and states without space programmes of their own are being asked to choose between two rule-sets that neither of them wrote.",
-          indicator: "Which framework governs the first contested lunar resource extraction. That moment, more than any diplomatic declaration, will reveal whether the Accords or the ILRS has produced the operative norm.",
+          body: "The Artemis Accords, a non-binding US-led framework, now have 62 state signatories and operational norms that function in practice as law: safety zones, resource-extraction rights, reporting requirements. The International Lunar Research Station (ILRS), the China-Russia counterpart, has a different signatory list and a different set of norms. Neither is a treaty. Both are soft-law coalitions whose standards bind participants in practice, and states without space programmes of their own are being asked to choose between two rule-sets that neither of them wrote.",
+          indicator: "The indicator to watch is whose framework applies when a country actually extracts resources from the Moon, the Artemis Accords or the ILRS. And the first attempts are already scheduled. China\u2019s Chang\u2019e-7 is set to land at the lunar south pole in 2026 to look for water ice. Chang\u2019e-8 follows in 2028 to test whether China can actually extract water from the lunar surface. Artemis III, the American counterpart, is now scheduled for 2027, pushed back from an original 2025 target. Whichever framework governs the first real extraction \u2014 the Artemis Accords if the US gets there first, the ILRS if China does \u2014 becomes the standard for everyone else. Not through any treaty or declaration. Through whoever moved first.",
         },
         {
           title: "The public/private distinction has collapsed.",
-          body: "Article VI of the Outer Space Treaty makes each state responsible for the activities of its \u201Cnon-governmental entities,\u201D a category that presumed a visible distinction between public and private actors. That distinction has collapsed, and differently in each major political economy. In the United States, SpaceX\u2019s Starshield division operates a classified variant of Starlink for American intelligence agencies under contract with the National Reconnaissance Office: nominally private, functionally a state capability. In China, CASC and CASIC operate within a system whose military coordination was consolidated under the PLA Aerospace Force, established directly under the Central Military Commission in April 2024: nominally commercial, with a chain of command that is not. In Europe, Thales Alenia Space and Airbus are the principal industrial partners for IRIS\u00B2, directed by a strategic-autonomy doctrine that is anything but private in intent.",
-          indicator: "Liability attribution. The first serious incident involving a nominally private orbital system acting under classified state direction will expose whether Article VI can bear the weight placed on it, or whether the entire framework of state responsibility in space requires reconstruction from the ground up.",
+          body: "Article VI of the Outer Space Treaty makes each state responsible for the activities of its \u201Cnon-governmental entities,\u201D a phrase that assumed a clear line between governments and private companies. That line has now collapsed, and differently in each major political economy. In the United States, SpaceX\u2019s Starshield division operates a classified variant of Starlink for American intelligence agencies under a $1.8 billion contract with the National Reconnaissance Office, signed in 2021 and disclosed only in 2024: nominally private, functionally a state capability. In China, CASC and CASIC operate within a system whose military coordination was consolidated under the PLA Aerospace Force, established directly under the Central Military Commission on 19 April 2024. The same day, the Strategic Support Force it replaced was dissolved: nominally commercial, with a chain of command that is not. In Europe, Thales Alenia Space and Airbus are the principal industrial partners for IRIS\u00B2, the EU\u2019s \u20AC10.6 billion sovereign constellation contracted in December 2024: technically private, directed by a strategic-autonomy doctrine that is not.",
+          indicator: "The indicator to watch is liability attribution. The first serious incident involving a nominally private orbital system acting under classified state direction will expose whether Article VI can bear the weight placed on it, or whether the entire framework of state responsibility in space requires reconstruction from the ground up.",
         },
       ],
       closer: "These three shifts are neither coordinated nor reversible. By 2030, when the ISS is retired, when Tiangong is the only government-run outpost in low-Earth orbit, and when Chang\u2019e-8 has tested Chinese extraction of lunar water ice, the questions of who governs AI in space and on whose terms will already have been answered. Those answers will not have come from treaty negotiation. They will have come from what the operators did in the meantime.",
@@ -396,5 +396,128 @@ export const copy = {
       line: "The rocket has already left the pad.",
       cta: "The debate has not.",
     },
+  },
+
+  timeline: {
+    kicker: "What comes next",
+    heading: "Upcoming developments.",
+    bands: {
+      top: "COMMERCIAL / TECHNICAL",
+      bottom: "GOVERNANCE / POLICY",
+    },
+    columns: [
+      {
+        year: "2024",
+        highlight: true,
+        top: [
+          { text: "First commercial active debris-removal demonstrations (ESA’s ClearSpace-1, Astroscale’s ELSA-M)" },
+          { text: "Chang’e-7 surveys the lunar south pole (ILRS)" },
+          { text: "Artemis II, first crewed lunar flyby since Apollo 17" },
+        ],
+        bottom: [
+          { text: "China stands up a dedicated PLA Aerospace Force", highlight: true },
+        ],
+      },
+      {
+        year: "2025",
+        highlight: true,
+        top: [
+          { text: "First commercial data hardware delivered to the lunar surface (Lonestar’s “Freedom Mission”)", highlight: true },
+        ],
+        bottom: [
+          { text: "Publicly reported space cyber incidents up 118% year-on-year (Jan–Aug)", highlight: true },
+        ],
+      },
+      {
+        year: "2026",
+        top: [],
+        bottom: [
+          { text: "UN COPUOS Long-Term Sustainability working group delivers draft report" },
+          { text: "EU AI Act full applicability" },
+        ],
+      },
+      {
+        year: "2027",
+        top: [
+          { text: "Artemis III" },
+          { text: "IRIS² initial services" },
+          { text: "Axiom launches orbital data-centre prototype at ISS" },
+          { text: "Google launches its Project Suncatcher demonstration satellites" },
+        ],
+        bottom: [
+          { text: "UN Working Group on space resources report to COPUOS" },
+          { text: "UNISPACE IV convening proposed" },
+        ],
+      },
+      {
+        year: "2028",
+        top: [
+          { text: "China’s Chang’e-8 tests extraction of lunar water ice" },
+        ],
+        bottom: [],
+      },
+      {
+        year: "2030",
+        top: [
+          { text: "~80,000 satellites in orbit; ~70% commercially owned" },
+          { text: "ISS retired; private LEO stations take over (Axiom, Starlab, Orbital Reef, Vast, Above: Space)" },
+        ],
+        bottom: [
+          { text: "Tiangong: the only government-run station left in low-Earth orbit" },
+        ],
+      },
+      {
+        year: "2035",
+        top: [
+          { text: "Space economy projected at ~$1 trillion" },
+          { text: "China-Russia ILRS basic station operational at lunar South Pole" },
+        ],
+        bottom: [],
+      },
+      {
+        year: "2040",
+        top: [],
+        bottom: [],
+      },
+    ],
+  },
+
+  openQuestions: {
+    kicker: "Open questions",
+    heading: "Six questions to keep your eye on.",
+    lede: "Each is live, each is unresolved, and each will shape what space governance looks like in the next decade.",
+    hint: "Tap each card to read",
+    items: [
+      {
+        title: "Space debris",
+        question: "When does low-Earth orbit get too crowded to use? And who pays when a dead satellite hits a working one?",
+        body: "The current liability rules were written when satellites were few and their owners clearly identifiable. They were not designed for an environment with tens of thousands of objects, abandoned hardware, or companies that have since gone out of business.",
+      },
+      {
+        title: "Surveillance from orbit",
+        question: "What does privacy mean when commercial satellites can pick out individual cars from orbit and revisit any spot on Earth in minutes?",
+        body: "Surveillance law developed in a context of ground-based cameras. How it applies at orbital scale is an open question.",
+      },
+      {
+        title: "Cybersecurity in space",
+        question: "What happens when the satellites the world now depends on for internet, navigation, and finance are hacked?",
+        body: "A single cyber-attack on a commercial satellite network at the start of the Ukraine war disabled tens of thousands of European connections in a morning. No existing treaty was designed with this kind of scenario in mind.",
+      },
+      {
+        title: "The night sky",
+        question: "Will the growth of satellite networks in low orbit eventually make ground-based astronomy impossible? And if so, who has the authority to act on it?",
+        body: "Tens of thousands of new satellites are reflecting sunlight and crossing telescope images, making it harder for astronomers on the ground to observe the universe. No current rules require operators to limit their visibility or their interference with astronomy.",
+      },
+      {
+        title: "The space divide",
+        question: "Who speaks for the roughly 160 countries that don’t operate their own satellites or rockets, and aren’t currently at the negotiating table?",
+        body: "The frameworks that shape space activity are largely written by the countries already operating in space. Those without space programmes typically end up working within rules they did not help write.",
+      },
+      {
+        title: "The environmental footprint",
+        question: "What is the real environmental cost of launching thousands of objects each year, and of those same objects burning up on re-entry?",
+        body: "Rocket exhaust affects stratospheric chemistry, and re-entering satellites deposit metallic particulates in the upper atmosphere. The cumulative impact is still being studied, and existing environmental frameworks do not yet specifically cover these activities.",
+      },
+    ],
   },
 };

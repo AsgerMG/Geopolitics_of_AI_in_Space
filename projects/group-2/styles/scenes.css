@@ -845,26 +845,15 @@ body.stage-muted .cluster {
 }
 .geo-shift-indicator {
   margin: 0.75rem 0 0;
-  padding: 0.55rem 0.9rem 0.55rem 1rem;
-  border-left: 2px solid var(--economist-red);
-  background: rgba(227, 18, 11, 0.06);
-  border-radius: 0 4px 4px 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  border-radius: 0;
   font-family: var(--serif);
-  font-size: clamp(0.88rem, 1.05vw, 0.98rem);
-  line-height: 1.5;
-  font-style: italic;
-  color: var(--ink-muted);
-}
-.geo-shift-indicator::before {
-  content: "\2192\00A0 Indicator to watch";
-  display: block;
-  font-family: var(--mono);
+  font-size: clamp(0.92rem, 1.1vw, 1.02rem);
+  line-height: 1.62;
   font-style: normal;
-  font-size: 0.62rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--economist-red);
-  margin-bottom: 0.3rem;
+  color: #fafbfc;
 }
 
 .scenarios {
@@ -1443,3 +1432,395 @@ body.stage-muted .cluster {
   .tc-body { grid-template-columns: 1fr; }
   .tc-body dt { padding-top: 0.35rem; }
 }
+
+/* ---------- Scene 4.5: Upcoming developments timeline ----------
+   Pinned full-screen chart between Act IV and the closer. Same sticky
+   pattern as the gallery — the cluster is muted while the chart is
+   pinned, so the timeline owns the screen edge to edge. */
+
+.scene-timeline {
+  /* Tall enough for a comfortable sticky dwell, but not so tall that
+     the cards below feel detached from the chart above. */
+  min-height: 170vh;
+  pointer-events: auto;
+  padding: 0;
+}
+.timeline-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* Anchor near the top so the heading sits right under where the
+     previous section ends, rather than floating in the middle of the
+     viewport. */
+  justify-content: flex-start;
+  padding: clamp(1.2rem, 3.5vh, 2.4rem) clamp(1.5rem, 4vw, 3.5rem) clamp(2rem, 5vh, 4rem);
+  gap: clamp(0.9rem, 2vh, 1.4rem);
+}
+/* Pull the futures scene's bottom padding in so the timeline sits
+   close to the end of Act IV rather than after a tall gap. */
+.scene-futures .scene-inner {
+  padding-bottom: clamp(0.5rem, 1.5vh, 1.5rem);
+}
+.timeline-head {
+  max-width: 78rem;
+  margin: 0 auto;
+  width: 100%;
+}
+.timeline-kicker {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--economist-red);
+  margin: 0 0 0.4rem;
+}
+.timeline-heading {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: #fafbfc;
+  margin: 0;
+  border-bottom: 2px solid var(--economist-red);
+  padding-bottom: 0.55rem;
+  max-width: 28ch;
+}
+.timeline-chart {
+  position: relative;
+  width: 100%;
+  max-width: 88rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  row-gap: 0.6rem;
+}
+.timeline-band-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(220, 230, 255, 0.55);
+  margin: 0;
+}
+.timeline-band-top { justify-self: start; }
+.timeline-band-bottom { justify-self: start; }
+
+.timeline-grid {
+  position: relative;
+  width: 100%;
+}
+.tl-columns {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--n, 8), minmax(0, 1fr));
+  align-items: stretch;
+  position: relative;
+}
+/* The horizontal axis line — drawn through the year labels. */
+.tl-columns::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(220, 230, 255, 0.28);
+  transform: translateY(-0.5px);
+}
+.tl-column {
+  grid-column: var(--col, auto);
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  align-items: stretch;
+  padding: 0 clamp(0.35rem, 0.9vw, 0.85rem);
+  position: relative;
+}
+.tl-stack {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-family: var(--serif);
+  font-size: clamp(0.72rem, 0.85vw, 0.84rem);
+  line-height: 1.28;
+  color: var(--ink);
+}
+.tl-stack--top {
+  /* Top stack reads downward toward the axis: newest items at the bottom. */
+  justify-content: flex-end;
+  padding-bottom: 0.7rem;
+}
+.tl-stack--bottom {
+  justify-content: flex-start;
+  padding-top: 0.7rem;
+  font-style: italic;
+}
+.tl-event {
+  position: relative;
+}
+.tl-event.is-red {
+  color: var(--economist-red);
+}
+.tl-event-text {
+  display: block;
+}
+
+/* One dashed connector per column — runs vertically through the centre,
+   crossing the axis where the year label sits. The year label has a
+   solid background so it reads cleanly through the line. */
+.tl-column::before,
+.tl-column::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 1px;
+  border-left: 1px dashed rgba(220, 230, 255, 0.32);
+  transform: translateX(-0.5px);
+  z-index: 0;
+}
+.tl-column::before {
+  top: 0;
+  bottom: 50%;
+}
+.tl-column::after {
+  top: 50%;
+  bottom: 0;
+}
+.tl-column.is-empty-top::before,
+.tl-column.is-empty-bottom::after {
+  display: none;
+}
+.tl-column[data-highlight-year]::before,
+.tl-column[data-highlight-year]::after {
+  border-left-color: rgba(227, 18, 11, 0.55);
+}
+
+.tl-year {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  letter-spacing: -0.01em;
+  color: #fafbfc;
+  margin: 0;
+  text-align: center;
+  padding: 0.25rem 0.4rem;
+  position: relative;
+  z-index: 2;
+  /* Match the panel backdrop so the year label cleanly breaks the dashed
+     connector and the axis line where it sits. */
+  background: var(--sky-bottom, #050a1a);
+}
+.tl-year.is-red {
+  color: var(--economist-red);
+}
+
+/* Narrow viewports: collapse the chart into a vertical year-by-year list. */
+@media (max-width: 1100px) {
+  .scene-timeline {
+    min-height: auto;
+  }
+  .timeline-sticky {
+    position: relative;
+    height: auto;
+    padding: clamp(2rem, 5vh, 4rem) clamp(1rem, 4vw, 2rem);
+  }
+  .tl-columns {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .tl-columns::before { display: none; }
+  .tl-column {
+    grid-column: 1;
+    grid-template-rows: auto auto auto;
+    padding: 0.8rem 0;
+    border-top: 1px solid var(--rule-strong);
+  }
+  .tl-stack { font-size: 0.85rem; }
+  .tl-stack--top {
+    padding-bottom: 0.4rem;
+  }
+  .tl-stack--bottom {
+    padding-top: 0.4rem;
+  }
+  .tl-stack--top .tl-event::after,
+  .tl-stack--bottom .tl-event::after { display: none; }
+  .tl-year { text-align: left; padding: 0.3rem 0; }
+}
+
+/* Reduced-motion: release the sticky and let the chart flow inline. */
+.reduced-motion .timeline-sticky {
+  position: relative;
+  height: auto;
+}
+
+/* The closer scene is a quiet outro — let the regular .scene-inner
+   layout handle it, but give it a touch more breathing room above. */
+.scene-closer .scene-inner {
+  padding-top: clamp(4rem, 12vh, 8rem);
+  padding-bottom: clamp(4rem, 12vh, 8rem);
+}
+
+/* ---------- Scene 4.75: Open Questions (3x2 flip cards) ---------- */
+
+/* Pull the cards up close under the timeline — overrides the default
+   non-liftoff scene-inner top padding so there's no tall gap between
+   the timeline pin releasing and the questions header. */
+.scene-openq .scene-inner {
+  padding-top: clamp(0.5rem, 1.5vh, 1.5rem) !important;
+}
+
+.oq-hint {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(220, 230, 255, 0.55);
+  margin: 0.9rem 0 0;
+}
+.oq-grid {
+  list-style: none;
+  margin: clamp(1.2rem, 3vh, 2rem) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.8rem, 1.5vw, 1.4rem);
+  perspective: 1400px;
+  /* Cards sit slightly wider than the running text. */
+  max-width: 78ch !important;
+}
+.oq-card {
+  position: relative;
+  aspect-ratio: 4 / 3;
+}
+.oq-flipper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  transform-style: preserve-3d;
+  transition: transform 620ms var(--ease-out);
+}
+.oq-flipper:focus-visible {
+  outline: 2px solid var(--economist-red);
+  outline-offset: 4px;
+}
+.oq-flipper.is-flipped {
+  transform: rotateY(180deg);
+}
+.oq-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(0.9rem, 1.6vw, 1.3rem);
+  border: 1px solid var(--rule-strong);
+  background: rgba(7, 14, 34, 0.78);
+  backdrop-filter: blur(10px);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: background 320ms var(--ease-out), border-color 320ms var(--ease-out);
+}
+.oq-face--front {
+  justify-content: space-between;
+  border-left: 3px solid var(--economist-red);
+}
+.oq-flipper:hover .oq-face--front {
+  background: rgba(13, 22, 48, 0.88);
+  border-color: rgba(227, 18, 11, 0.55);
+}
+.oq-face--back {
+  transform: rotateY(180deg);
+  gap: 0.6rem;
+  overflow-y: auto;
+  background: rgba(11, 18, 38, 0.92);
+}
+.oq-corner {
+  font-family: var(--mono);
+  font-size: 1rem;
+  color: var(--economist-red);
+  align-self: flex-end;
+  opacity: 0.75;
+}
+.oq-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.05rem, 1.7vw, 1.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: #fafbfc;
+  display: block;
+}
+.oq-cue {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(220, 230, 255, 0.5);
+  display: block;
+}
+.oq-question {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(0.92rem, 1.2vw, 1.05rem);
+  line-height: 1.3;
+  color: #fafbfc;
+  display: block;
+}
+.oq-body {
+  font-family: var(--serif);
+  font-size: clamp(0.78rem, 0.95vw, 0.9rem);
+  line-height: 1.45;
+  color: var(--ink);
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .oq-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .oq-grid {
+    grid-template-columns: 1fr;
+  }
+  .oq-card { aspect-ratio: 3 / 2; }
+}
+
+/* Reduced-motion: drop the 3D flip and show both faces stacked. */
+.reduced-motion .oq-card {
+  aspect-ratio: auto;
+  height: auto;
+}
+.reduced-motion .oq-flipper {
+  transform: none !important;
+  transform-style: flat;
+  height: auto;
+}
+.reduced-motion .oq-face {
+  position: relative;
+  inset: auto;
+  backface-visibility: visible;
+}
+.reduced-motion .oq-face--back {
+  transform: none;
+  margin-top: 0.6rem;
+}
+.reduced-motion .oq-cue { display: none; }
+
+

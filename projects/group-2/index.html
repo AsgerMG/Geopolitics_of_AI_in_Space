@@ -830,7 +830,7 @@
           <!-- Treaty matrix: grouped cards, each with severity badge -->
           <section class="gov-matrix" aria-label="Treaty and framework matrix">
             <header class="matrix-head">
-              <p class="matrix-kicker">Treaty landscape</p>
+              <p class="matrix-kicker" data-bind="governance.matrixKicker"></p>
               <h3 class="matrix-heading" data-bind="governance.tableHeading"></h3>
               <p class="matrix-sub" data-bind="governance.tableSubhead"></p>
               <ul class="matrix-legend" aria-label="Severity legend">
@@ -860,7 +860,7 @@
                       <dd data-field="relevance"></dd>
                     </dl>
                     <div class="tc-gaps">
-                      <h6 class="tc-gaps-label">Regulatory gaps</h6>
+                      <h6 class="tc-gaps-label">Where the text is silent</h6>
                       <ul class="tc-gaps-list" data-field-list="gaps"></ul>
                     </div>
                   </article>
@@ -889,7 +889,7 @@
                       <dd data-field="relevance"></dd>
                     </dl>
                     <div class="tc-gaps">
-                      <h6 class="tc-gaps-label">Regulatory gaps</h6>
+                      <h6 class="tc-gaps-label">Where the text is silent</h6>
                       <ul class="tc-gaps-list" data-field-list="gaps"></ul>
                     </div>
                   </article>
@@ -918,7 +918,7 @@
                       <dd data-field="relevance"></dd>
                     </dl>
                     <div class="tc-gaps">
-                      <h6 class="tc-gaps-label">Regulatory gaps</h6>
+                      <h6 class="tc-gaps-label">Where the text is silent</h6>
                       <ul class="tc-gaps-list" data-field-list="gaps"></ul>
                     </div>
                   </article>
@@ -947,7 +947,7 @@
                       <dd data-field="relevance"></dd>
                     </dl>
                     <div class="tc-gaps">
-                      <h6 class="tc-gaps-label">Regulatory gaps</h6>
+                      <h6 class="tc-gaps-label">Where the text is silent</h6>
                       <ul class="tc-gaps-list" data-field-list="gaps"></ul>
                     </div>
                   </article>
@@ -964,7 +964,7 @@
       <section
         class="scene scene-futures"
         data-scene="futures"
-        data-range="0.86,1.0"
+        data-range="0.86,0.92"
         aria-labelledby="sc-futures-h"
       >
         <div class="scene-inner">
@@ -991,7 +991,72 @@
 
             <p class="act-para act-para--closer" data-bind="futures.geopolitics.closer"></p>
           </article>
+        </div>
+      </section>
 
+      <!-- Scene 4.5: Upcoming developments timeline (full-screen pinned) -->
+      <section
+        class="scene scene-timeline"
+        data-scene="timeline"
+        data-range="0.92,0.96"
+        aria-labelledby="sc-timeline-h"
+      >
+        <div class="timeline-sticky">
+          <header class="timeline-head">
+            <p class="timeline-kicker" data-bind="timeline.kicker"></p>
+            <h2 class="timeline-heading" id="sc-timeline-h" data-bind="timeline.heading"></h2>
+          </header>
+          <div class="timeline-chart" aria-hidden="false">
+            <p class="timeline-band-label timeline-band-top" data-bind="timeline.bands.top"></p>
+            <div class="timeline-grid" data-timeline-grid></div>
+            <p class="timeline-band-label timeline-band-bottom" data-bind="timeline.bands.bottom"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene 4.75: Open Questions (3x2 flip cards) -->
+      <section
+        class="scene scene-openq"
+        data-scene="openQuestions"
+        data-range="0.96,0.99"
+        aria-labelledby="sc-openq-h"
+      >
+        <div class="scene-inner">
+          <header class="scene-head">
+            <p class="kicker" data-bind="openQuestions.kicker"></p>
+            <h2 class="scene-heading" id="sc-openq-h" data-bind="openQuestions.heading"></h2>
+            <hr class="scene-rule" aria-hidden="true" />
+            <p class="scene-lede has-dropcap" data-bind="openQuestions.lede"></p>
+            <p class="oq-hint" data-bind="openQuestions.hint"></p>
+          </header>
+          <ol class="oq-grid" data-bind-list="openQuestions.items" data-template="oq">
+            <template data-template-id="oq">
+              <li class="oq-card">
+                <button type="button" class="oq-flipper" aria-pressed="false">
+                  <span class="oq-face oq-face--front">
+                    <span class="oq-corner" aria-hidden="true">↻</span>
+                    <span class="oq-title" data-field="title"></span>
+                    <span class="oq-cue">Tap to reveal</span>
+                  </span>
+                  <span class="oq-face oq-face--back">
+                    <span class="oq-question" data-field="question"></span>
+                    <span class="oq-body" data-field="body"></span>
+                  </span>
+                </button>
+              </li>
+            </template>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Scene 5: Closer -->
+      <section
+        class="scene scene-closer"
+        data-scene="closer"
+        data-range="0.99,1.0"
+        aria-label="Closing"
+      >
+        <div class="scene-inner">
           <footer class="closer">
             <p class="closer-line" data-bind="futures.closer.line"></p>
             <p class="closer-cta" data-bind="futures.closer.cta"></p>

@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1 status)",
+      "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1 log --oneline -15)",
+      "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1 diff --stat HEAD -- space-op-ed/)",
+      "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1 show HEAD:space-op-ed/content/copy.js)",
+      "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1 show HEAD:space-op-ed/scripts/stage.js)",
+      "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1 status -- space-op-ed/scripts/stage.js)",
+      "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1 show HEAD:space-op-ed/index.html)",
+      "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1 show HEAD:space-op-ed/scripts/main.js)",
+      "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1 checkout HEAD -- space-op-ed/content/copy.js space-op-ed/index.html space-op-ed/scripts/main.js space-op-ed/scripts/scenes/whyNow.js space-op-ed/styles/scenes.css)",
+      "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1 status -- space-op-ed/)"
+    ]
+  }
+}

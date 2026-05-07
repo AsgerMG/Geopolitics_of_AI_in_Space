@@ -1,83 +1,75 @@
 # The Next Frontier of AI Isn't a Model. It's an Orbit.
 
-## Sciences Po — course hub submission (Group 2)
+An interactive, scroll-driven op-ed on the geopolitics of AI data centres in space.
 
-This directory is the **final static site** for Group 2, intended for the class repository  
-[**AABK6/geopolitics-ai-scpo-hub**](https://github.com/AABK6/geopolitics-ai-scpo-hub).
+The reader does not read an article. They **ascend** — from a launch pad through low Earth orbit, past geostationary, and out into deep space. Each altitude band is one talking point. The background, sky, stars, Earth curvature, and rocket position all respond to a single scroll-progress value.
 
-| Requirement | This project |
-| --- | --- |
-| Entry file | **`index.html`** (in this folder) |
-| Build step | **None** — plain HTML, CSS, and JavaScript (ES modules). No React/Vue, no `npm run build`, no `package.json` in this folder. |
-| Self-contained | All assets under this folder. Imports stay inside `projects/group-2/` (e.g. `scripts/` → `content/` are relative **within** the sandbox, not `../` out of the hub). |
-| Pull Request | **Only** change `projects/group-2/` in the hub — the hub’s automation rejects PRs that touch `shared/`, `primer/`, or other groups. |
+## Course hub (Sciences Po)
 
-### Submitting via GitHub (fork → PR)
-
-Follow the [official student instructions](https://github.com/AABK6/geopolitics-ai-scpo-hub#instructions-for-students-publishing-your-group-project) (Option B, “Builder” method) in the hub `README.md`. Summary:
-
-1. **Fork** [geopolitics-ai-scpo-hub](https://github.com/AABK6/geopolitics-ai-scpo-hub) on GitHub, then clone your fork.
-2. Copy or merge this **entire** folder into your fork as **`projects/group-2/`** (so `index.html` lives at `projects/group-2/index.html`).
-3. Create a branch, e.g. `group-2-final-submission`.
-4. **Stage only your sandbox:**  
-   `git add projects/group-2/`
-5. Commit and push the branch, then open a **Pull Request** from your fork to **`AABK6/geopolitics-ai-scpo-hub:main`**.
-
-After merge, GitHub Pages rebuilds; the 3D hub can load your project from `projects/group-2/index.html`.
-
-### Local preview (full hub)
-
-From the **repository root** of a cloned `geopolitics-ai-scpo-hub`:
+If you use this repo to develop but submit to [**geopolitics-ai-scpo-hub**](https://github.com/AABK6/geopolitics-ai-scpo-hub) as **Group 2**, keep a copy under `projects/group-2/` (entry file `projects/group-2/index.html`). From the monorepo root:
 
 ```bash
-python3 -m http.server 8000
-# open http://localhost:8000/projects/group-2/
+rsync -a --delete --exclude='.DS_Store' space-op-ed/ projects/group-2/
 ```
 
-### Vercel (separate team preview)
+Then follow **`projects/group-2/README.md`** for fork → PR instructions (change **only** `projects/group-2/` in the hub).
 
-Point the Vercel project at this app’s static root (e.g. this folder if you only deploy the op-ed), set **Build Command** empty and **Output** to this folder, or use “Other / static” with no build.
+## What this folder is
 
----
+A fully self-contained static site. No build step, no bundler, no npm. Double-click `index.html` or serve the folder with any static server and it works.
 
-## What this project is
-
-An interactive, scroll-driven op-ed on the geopolitics of AI and data centres in space. The reader does not only read: they **ascend** — from a launch pad through low Earth orbit, past geostationary, and out into deep space. Each band maps to a talking point. The background, stars, Earth, and rocket (then satellite cluster) follow scroll position.
-
-## Quick start (this folder alone)
+## Quick start
 
 ```bash
-cd projects/group-2
+cd space-op-ed
 python3 -m http.server 8080
 # open http://localhost:8080
 ```
 
-Or: `npx serve .` from this directory.
+Or use any of:
 
-> ES modules need `http://` or `https://` in most browsers; if `file://` shows a blank page, use a local server.
+```bash
+npx serve .
+php -S localhost:8080
+```
+
+It also works by opening `index.html` directly in a modern browser (the JS uses ES modules, which require `http://` or `https://` on some browsers — if the page is blank when opened via `file://`, use one of the server commands above).
 
 ## Narrative map
 
-| Band | Scene | Topic |
+| Altitude | Scene | Talking point |
 | --- | --- | --- |
-| Liftoff | Hero | Hook, intro video |
-| Act I | Why space, why now | Case for orbital compute |
-| Gallery | Pinned interlude | Starcloud / visuals |
-| Act II | Actors | US, China, EU, private sector |
-| Act III | Governance | Treaties, gaps, matrix |
-| Act IV | Futures | Scenarios, open questions, closer |
+| 0 km | Liftoff | Hook and thesis |
+| 12 km | Why Space. Why Now. | The case for orbital data centres |
+| 500 km (LEO) | Actors and Strategy | US, China, EU, private sector |
+| 36,000 km (GEO) | Governance Vacuum | Treaty ring fractures into legal gaps |
+| Beyond | If This Plays Out | Four futures + open questions |
 
 ## File layout
 
 ```
-projects/group-2/
-  index.html              # entry — single page + inline SVG stage
-  styles/                 # main, stage, scenes
-  scripts/                # main.js, stage.js, util/, scenes/
+space-op-ed/
+  index.html              # single-page structure + inline SVGs
+  styles/
+    main.css              # design tokens, typography, shared UI
+    stage.css             # cosmic stage + rocket + Earth + orbits
+    scenes.css            # per-scene layout
+  scripts/
+    main.js               # entry: copy binding + boot
+    stage.js              # sky, stars, Earth, rocket — all driven by progress
+    scenes/
+      liftoff.js
+      whyNow.js
+      actors.js
+      governance.js
+      futures.js
+    util/
+      lerp.js             # clamp, lerp, smoothstep, colour ramps
+      scroll.js           # scroll engine → single progress value
+      reducedMotion.js    # prefers-reduced-motion detector
   content/
-    copy.js               # all user-facing text
-    sources.md            # citations
-  assets/                 # images, video (intro.mp4, etc.)
+    copy.js               # ALL editable text lives here
+    sources.md            # citations + TK markers
   README.md
   LICENSE
   .gitignore
@@ -85,17 +77,71 @@ projects/group-2/
 
 ## Editing content
 
-All strings live in **`content/copy.js`**. Save and refresh the browser.
+All op-ed copy lives in **`content/copy.js`**. It is a plain JavaScript object — non-coders can edit any string safely. The structure mirrors the narrative:
+
+- `meta` — title, author, dateline
+- `liftoff` — hero title, subtitle, scroll hint
+- `whyNow` — four pillars and a counter-panel
+- `actors` — four actor cards (code, name, stance, projects, wants)
+- `governance` — treaty list, gap cards, closer
+- `futures` — four scenarios, open questions, closing lines
+
+Save the file, refresh the browser. That's it.
+
+## Adding or reordering scenes
+
+Each scene in `index.html` has a `data-scene` id and a `data-range="a,b"` attribute (positions along the 0 → 1 scroll timeline). To add a new scene:
+
+1. Add a new `<section data-scene="..." data-range="a,b">` in `index.html`.
+2. Adjust the other scenes' `data-range` values so they still sum to `[0, 1]`.
+3. Add a new `content.xyz` block in `copy.js`.
+4. Create `scripts/scenes/xyz.js` exporting `createXyzScene(el)`.
+5. Register it in `scripts/main.js` under `sceneDefs`.
 
 ## Accessibility
 
-- `prefers-reduced-motion` respected.
-- Skip link to a plain-text version at the top of the page.
-- Content is real DOM, selectable and indexable.
+- Full `prefers-reduced-motion` support — the animated journey collapses to a plain document.
+- A **Skip to plain-text version** link sits at the top for keyboard users and screen readers.
+- All copy lives in real DOM (not canvas), so it is selectable, searchable, and indexable.
+- Colour contrast meets WCAG AA against the darkest background state.
+
+## Performance
+
+- No images. Stars are drawn on a canvas. The rocket, Earth, and orbits are inline SVG.
+- Zero external JS dependencies. One external font family loaded from Google Fonts (with a system-font fallback if it fails).
+- Target page weight: **< 400 KB** (gzipped) excluding fonts.
+- Scroll handler uses `requestAnimationFrame` throttling; the stage redraws only when progress changes by > 0.05 %.
+
+## Moving this folder to a new GitHub repo
+
+The folder is a self-contained static site. To publish it on its own:
+
+```bash
+# From this repo's root:
+cp -R space-op-ed /tmp/ai-in-space-op-ed
+cd /tmp/ai-in-space-op-ed
+
+git init
+git add .
+git commit -m "Initial commit: interactive AI-in-space op-ed"
+git branch -M main
+
+# Point at your new GitHub repo (create it first on github.com):
+git remote add origin git@github.com:<you>/<repo>.git
+git push -u origin main
+```
+
+### Hosting
+
+- **GitHub Pages** — enable in repo settings → Pages → Deploy from branch `main` → root. Site goes live at `https://<you>.github.io/<repo>/`.
+- **Vercel / Netlify** — connect the repo, accept all defaults (static site, no build command). Deploy.
+- **Any static host** — `index.html` is the entry point; everything else is a relative path.
+
+No environment variables, no secrets, no build step to configure.
 
 ## Browser support
 
-Recent Chrome, Safari, Firefox. Needs ES modules and CSS custom properties.
+Tested for layout and motion fidelity on the latest Chrome, Safari, and Firefox. Requires a browser that supports ES modules and CSS custom properties (i.e. anything shipped since mid-2019).
 
 ## Licence
 

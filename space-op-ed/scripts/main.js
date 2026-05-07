@@ -17,6 +17,11 @@ import { createGalleryScene } from "./scenes/gallery.js";
 import { createActorsScene } from "./scenes/actors.js";
 import { createGovernanceScene } from "./scenes/governance.js";
 import { createFuturesScene } from "./scenes/futures.js";
+import { createTimelineScene } from "./scenes/timeline.js";
+import { createOpenQuestionsScene } from "./scenes/openQuestions.js";
+
+// Closer is purely static — no scroll-driven behaviour beyond document flow.
+const createCloserScene = () => ({ update() {} });
 
 // ---------- Copy binding ----------
 
@@ -145,12 +150,26 @@ function buildTextFallback(data) {
         data.futures.lede,
         ...(data.futures.geopolitics?.intro || []),
         ...(data.futures.geopolitics?.shifts || []).map(
-          (s) => `${s.title} ${s.body}`
+          (s) => `${s.title} ${s.body} ${s.indicator || ""}`
         ),
         data.futures.geopolitics?.closer,
       ]
         .filter(Boolean)
         .join(" "),
+    },
+    {
+      heading: data.timeline?.heading || "Upcoming developments",
+      items: (data.timeline?.columns || []).flatMap((col) => [
+        ...col.top.map((ev) => `${col.year} — ${ev.text}`),
+        ...col.bottom.map((ev) => `${col.year} — ${ev.text}`),
+      ]),
+    },
+    {
+      heading: data.openQuestions?.heading || "Open questions",
+      body: data.openQuestions?.lede,
+      items: (data.openQuestions?.items || []).map(
+        (q) => `${q.title} — ${q.question} ${q.body}`
+      ),
       closer: `${data.futures.closer.line} ${data.futures.closer.cta}`,
     },
   ];
@@ -216,12 +235,15 @@ function boot() {
 
   // 5. Scene controllers
   const sceneDefs = [
-    { id: "liftoff",    create: createLiftoffScene },
-    { id: "whyNow",     create: createWhyNowScene },
-    { id: "gallery",    create: createGalleryScene },
-    { id: "actors",     create: createActorsScene },
-    { id: "governance", create: createGovernanceScene },
-    { id: "futures",    create: createFuturesScene },
+    { id: "liftoff",       create: createLiftoffScene },
+    { id: "whyNow",        create: createWhyNowScene },
+    { id: "gallery",       create: createGalleryScene },
+    { id: "actors",        create: createActorsScene },
+    { id: "governance",    create: createGovernanceScene },
+    { id: "futures",       create: createFuturesScene },
+    { id: "timeline",      create: createTimelineScene },
+    { id: "openQuestions", create: createOpenQuestionsScene },
+    { id: "closer",        create: createCloserScene },
   ];
 
   const sceneEls = sceneDefs.map(({ id, create }) => {
