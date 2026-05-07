@@ -12,7 +12,24 @@
       "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1 checkout HEAD -- space-op-ed/content/copy.js space-op-ed/index.html space-op-ed/scripts/main.js space-op-ed/scripts/scenes/whyNow.js space-op-ed/styles/scenes.css)",
       "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1 status -- space-op-ed/)",
       "Bash(sed -i '' '864,997d' /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1/space-op-ed/index.html)",
-      "Bash(sed -n '858,870p' /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1/space-op-ed/index.html)"
+      "Bash(sed -n '858,870p' /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1/space-op-ed/index.html)",
+      "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1 remote -v)",
+      "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1 branch --show-current)",
+      "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1 status --short)",
+      "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1/space-op-ed status)",
+      "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1 log --oneline -3)",
+      "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1 diff HEAD -- space-op-ed/content/copy.js)",
+      "Bash(git -C /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1 log --oneline -10)",
+      "Bash(rsync -a --delete --exclude README.md --exclude LICENSE space-op-ed/ projects/group-2/)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(chmod +x scripts/clone-course-hub-fork.sh)",
+      "Bash(./scripts/clone-course-hub-fork.sh AsgerMG)",
+      "Bash(rsync -a --delete /Users/asgermollergrimberg/Geopolitics_of_AI_in_Space-1/projects/group-2/ /Users/asgermollergrimberg/Desktop/geopolitics-ai-scpo-hub/projects/group-2/)",
+      "Bash(git -C /Users/asgermollergrimberg/Desktop/geopolitics-ai-scpo-hub status --short)",
+      "Bash(git -C /Users/asgermollergrimberg/Desktop/geopolitics-ai-scpo-hub push -u origin group-2-submission)",
+      "Bash(gh auth *)"
     ]
   }
 }
