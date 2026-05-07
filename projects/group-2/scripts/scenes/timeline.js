@@ -15,6 +15,7 @@ function el(tag, cls, text) {
 function renderEvent(ev, band) {
   const li = el("li", `tl-event tl-event--${band}`);
   if (ev.highlight) li.classList.add("is-red");
+  if (ev.ai) li.classList.add("is-ai");
   li.appendChild(el("span", "tl-event-text", ev.text));
   return li;
 }

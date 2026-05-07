@@ -19,6 +19,7 @@ import { createGovernanceScene } from "./scenes/governance.js";
 import { createFuturesScene } from "./scenes/futures.js";
 import { createTimelineScene } from "./scenes/timeline.js";
 import { createOpenQuestionsScene } from "./scenes/openQuestions.js";
+import { createRegNetScene } from "./scenes/regNet.js";
 
 // Closer is purely static — no scroll-driven behaviour beyond document flow.
 const createCloserScene = () => ({ update() {} });
@@ -136,13 +137,16 @@ function buildTextFallback(data) {
     {
       heading: data.governance.heading,
       body: [data.governance.lede, ...(data.governance.intro || [])].join(" "),
-      items: (data.governance.groups || []).flatMap((g) =>
-        g.treaties.map(
-          (t) =>
-            `${t.name} (${t.meta}) — ${t.relevance} Gaps: ${t.gaps.join("; ")}`
-        )
-      ),
-      closer: data.governance.note,
+    },
+    {
+      heading: data.regNet?.heading || "Two systems",
+      body: data.regNet?.lede,
+      items: [
+        `${data.regNet?.spaceCluster?.label || "Space treaties"}: ${(data.regNet?.spaceCluster?.nodes || []).map((n) => `${n.name} (${n.year})`).join("; ")}`,
+        `${data.regNet?.aiCluster?.label || "AI regulation"}: ${(data.regNet?.aiCluster?.nodes || []).map((n) => `${n.name} (${n.year})`).join("; ")}`,
+        `What falls between: ${(data.regNet?.chasmLabels || []).join("; ")}`,
+      ],
+      closer: data.regNet?.closer,
     },
     {
       heading: data.futures.heading,
@@ -150,7 +154,7 @@ function buildTextFallback(data) {
         data.futures.lede,
         ...(data.futures.geopolitics?.intro || []),
         ...(data.futures.geopolitics?.shifts || []).map(
-          (s) => `${s.title} ${s.body}`
+          (s) => `${s.title} ${s.body} ${s.indicator || ""}`
         ),
         data.futures.geopolitics?.closer,
       ]
@@ -235,15 +239,16 @@ function boot() {
 
   // 5. Scene controllers
   const sceneDefs = [
-    { id: "liftoff",    create: createLiftoffScene },
-    { id: "whyNow",     create: createWhyNowScene },
-    { id: "gallery",    create: createGalleryScene },
-    { id: "actors",     create: createActorsScene },
-    { id: "governance", create: createGovernanceScene },
-    { id: "futures",    create: createFuturesScene },
-    { id: "timeline",   create: createTimelineScene },
+    { id: "liftoff",       create: createLiftoffScene },
+    { id: "whyNow",        create: createWhyNowScene },
+    { id: "gallery",       create: createGalleryScene },
+    { id: "actors",        create: createActorsScene },
+    { id: "governance",    create: createGovernanceScene },
+    { id: "regNet",        create: createRegNetScene },
+    { id: "futures",       create: createFuturesScene },
+    { id: "timeline",      create: createTimelineScene },
     { id: "openQuestions", create: createOpenQuestionsScene },
-    { id: "closer",     create: createCloserScene },
+    { id: "closer",        create: createCloserScene },
   ];
 
   const sceneEls = sceneDefs.map(({ id, create }) => {
