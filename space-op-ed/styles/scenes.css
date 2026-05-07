@@ -1569,28 +1569,24 @@ body.stage-muted .cluster {
 }
 /* AI / orbital data-centre milestones — picked out with a cyan accent
    so the reader can scan the chart for the AI thread without losing
-   the broader space context. */
+   the broader space context. Kept lightweight (no border, just a
+   small inline tag) so it doesn't widen the column or overlap the
+   neighbouring stack. */
 .tl-event.is-ai {
   color: #d8f7fa;
-}
-.tl-event.is-ai .tl-event-text {
-  padding-left: 0.55rem;
-  border-left: 2px solid rgba(125, 249, 255, 0.7);
 }
 .tl-event.is-ai .tl-event-text::before {
   content: "AI · ";
   font-family: var(--mono);
-  font-size: 0.66em;
+  font-size: 0.7em;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #7df9ff;
-  margin-right: 0.15rem;
+  margin-right: 0.2em;
+  font-weight: 500;
 }
 .tl-event.is-ai.is-red {
   color: var(--economist-red);
-}
-.tl-event.is-ai.is-red .tl-event-text {
-  border-left-color: rgba(125, 249, 255, 0.7);
 }
 .tl-event-text {
   display: block;
@@ -1837,10 +1833,11 @@ body.stage-muted .cluster {
    Driven by `data-beat` on .regnet-frame; CSS handles the rest. */
 
 .scene-regnet {
-  /* Five reading beats while pinned: total scroll ~ 260vh gives the
-     reader ~32vh per beat once the panel is pinned, which sits well
-     between "click through" and "trapped". */
-  min-height: 260vh;
+  /* Five reading beats while pinned. Total scroll ~360vh gives the
+     reader ~52vh per beat once the panel pins — about half a viewport
+     of scrolling before each beat advances, which is enough time to
+     read the chasm labels at the end without rushing. */
+  min-height: 360vh;
   pointer-events: auto;
   /* Padding-bottom creates a brief calm after the network unsticks
      and before Act IV begins, so the closer reads as a verdict
@@ -2046,25 +2043,54 @@ body.stage-muted .cluster {
 }
 
 /* ---- Chasm labels ---- */
+/* The whole row (markers + text) animates together. Hidden by default,
+   surfaces faintly at beat 4 (when bridges fail), full strength at
+   beat 5. Each row is staggered so they cascade in. */
+.rn-chasm-row {
+  opacity: 0;
+  transition: opacity 700ms var(--ease-out);
+}
+.rn-chasm-row:nth-child(1) { transition-delay: 0ms; }
+.rn-chasm-row:nth-child(2) { transition-delay: 110ms; }
+.rn-chasm-row:nth-child(3) { transition-delay: 220ms; }
+.rn-chasm-row:nth-child(4) { transition-delay: 330ms; }
+.rn-chasm-row:nth-child(5) { transition-delay: 440ms; }
 .rn-chasm-label {
   font-family: var(--serif);
   font-style: italic;
-  font-size: 13.5px;
-  fill: rgba(220, 230, 255, 0.92);
+  font-size: 17px;
+  font-weight: 500;
+  fill: #fafbfc;
   paint-order: stroke;
-  stroke: rgba(7, 14, 34, 0.85);
-  stroke-width: 3.5;
+  stroke: rgba(7, 14, 34, 0.92);
+  stroke-width: 4.5;
   stroke-linejoin: round;
-  opacity: 0;
-  transition: opacity 600ms var(--ease-out);
 }
+.rn-chasm-marker {
+  stroke: var(--economist-red);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+.rn-chasm-header {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  fill: var(--economist-red);
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-out);
+}
+[data-beat="4"] .rn-chasm-header { opacity: 0.7; }
+[data-beat="5"] .rn-chasm-header { opacity: 1; }
+.reduced-motion .rn-chasm-header { opacity: 1; }
 
 /* ---- Beat-driven highlights ---- */
 /* Beat 1: both clusters dim, just establish the picture. */
 [data-beat="1"] .rn-node,
 [data-beat="1"] .rn-edge { opacity: 0.55; }
 [data-beat="1"] .rn-ghost { opacity: 0; }
-[data-beat="1"] .rn-chasm-label { opacity: 0; }
+[data-beat="1"] .rn-chasm-row { opacity: 0; }
 
 /* Beat 2: space cluster rises, AI dims further. */
 [data-beat="2"] .rn-cluster--space .rn-node,
@@ -2098,14 +2124,19 @@ body.stage-muted .cluster {
   100% { opacity: 0.85; stroke-width: 1; }
 }
 
-/* Beat 5: ghost edges settle dim again; chasm labels fade in. */
+/* Beat 4: ghost edges have failed; the chasm labels (the actual
+   threats) start to surface in faint preview. */
+[data-beat="4"] .rn-chasm-row { opacity: 0.55; }
+
+/* Beat 5: ghost edges settle dim again; chasm labels are now the
+   focal point — full strength, staggered cascade in. */
 [data-beat="5"] .rn-node,
 [data-beat="5"] .rn-edge { opacity: 0.55; }
 [data-beat="5"] .rn-ghost {
   opacity: 0.32;
   stroke: rgba(227, 18, 11, 0.45);
 }
-[data-beat="5"] .rn-chasm-label { opacity: 1; }
+[data-beat="5"] .rn-chasm-row { opacity: 1; }
 
 /* Caption rail under the chart. */
 .regnet-caption-rail {
@@ -2167,9 +2198,14 @@ body.stage-muted .cluster {
    panel. The closer block grows ~6–10rem of padding/margin combined
    either side; the stage gives up roughly that much height. */
 .regnet-sticky[data-beat="5"] .regnet-stage-wrap {
-  opacity: 0.4;
-  height: clamp(220px, 34vh, 380px);
+  opacity: 0.35;
+  height: clamp(160px, 26vh, 280px);
   transition: opacity 700ms var(--ease-out), height 700ms var(--ease-out);
+}
+/* Slightly trim the regnet head at beat 5 so the verdict has more
+   room. The lede still reads but the chart isn't fighting for height. */
+.regnet-sticky[data-beat="5"] .regnet-lede {
+  opacity: 0.5;
 }
 .regnet-sticky[data-beat="5"] .regnet-caption {
   opacity: 0.55;
@@ -2200,7 +2236,7 @@ body.stage-muted .cluster {
   height: auto;
 }
 .reduced-motion .rn-ghost { opacity: 0.3; animation: none; }
-.reduced-motion .rn-chasm-label { opacity: 1; }
+.reduced-motion .rn-chasm-row { opacity: 1; }
 .reduced-motion .rn-node,
 .reduced-motion .rn-edge { opacity: 1 !important; }
 

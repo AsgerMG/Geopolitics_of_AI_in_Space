@@ -96,18 +96,41 @@ function renderGhostEdges(g, ghosts, spaceIdx, aiIdx) {
 }
 
 function renderChasmLabels(g, labels) {
+  // Header at the top of the chasm column — frames the labels as the
+  // explicit list of regulatory gaps, not just floating text.
+  const header = svg("text", {
+    x: VB_W / 2, y: 60, class: "rn-chasm-header", "text-anchor": "middle",
+  });
+  header.textContent = "What falls between";
+  g.appendChild(header);
+
   // Distribute labels vertically through the central column.
-  const top = 90;
+  const top = 110;
   const bottom = VB_H - 90;
   const span = bottom - top;
   const step = labels.length > 1 ? span / (labels.length - 1) : 0;
   labels.forEach((text, i) => {
     const y = top + step * i;
+    const row = svg("g", {
+      class: "rn-chasm-row",
+      transform: `translate(${VB_W / 2}, ${y})`,
+    });
+    // Two red leading dashes flanking the label, so each "what falls
+    // between" reads as a marked statement rather than floating text.
+    const dashLen = 12;
+    const dashGap = 90; // half-distance from centre to where the dash begins
+    row.appendChild(svg("line", {
+      x1: -dashGap - dashLen, y1: 0, x2: -dashGap, y2: 0, class: "rn-chasm-marker",
+    }));
+    row.appendChild(svg("line", {
+      x1: dashGap, y1: 0, x2: dashGap + dashLen, y2: 0, class: "rn-chasm-marker",
+    }));
     const t = svg("text", {
-      x: VB_W / 2, y, class: "rn-chasm-label", "text-anchor": "middle",
+      x: 0, y: 5, class: "rn-chasm-label", "text-anchor": "middle",
     });
     t.textContent = text;
-    g.appendChild(t);
+    row.appendChild(t);
+    g.appendChild(row);
   });
 }
 
