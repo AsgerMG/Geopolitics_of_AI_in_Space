@@ -642,7 +642,7 @@
         </div>
       </section>
 
-      <!-- Scene 1: The strategic case for datacenters in space -->
+      <!-- Scene 1: The strategic case for data centres in space -->
       <section
         class="scene scene-whyNow"
         data-scene="whyNow"
@@ -826,139 +826,48 @@
             <p class="act-para" data-bind="governance.intro.2"></p>
             <p class="act-para" data-bind="governance.intro.3"></p>
           </article>
-
-          <!-- Treaty matrix: grouped cards, each with severity badge -->
-          <section class="gov-matrix" aria-label="Treaty and framework matrix">
-            <header class="matrix-head">
-              <p class="matrix-kicker">Treaty landscape</p>
-              <h3 class="matrix-heading" data-bind="governance.tableHeading"></h3>
-              <p class="matrix-sub" data-bind="governance.tableSubhead"></p>
-              <ul class="matrix-legend" aria-label="Severity legend">
-                <li><span class="sev-dot sev-dot--critical" aria-hidden="true"></span>Critical gap</li>
-                <li><span class="sev-dot sev-dot--significant" aria-hidden="true"></span>Significant gap</li>
-              </ul>
-            </header>
-
-            <details class="gov-group">
-              <summary class="gov-group-label">
-                <span class="gg-chevron" aria-hidden="true"></span>
-                <span class="gg-label" data-bind="governance.groups.0.label"></span>
-                <span class="gg-count" data-bind="governance.groups.0.count"></span>
-              </summary>
-              <div class="gov-grid" data-bind-list="governance.groups.0.treaties" data-template="tcard">
-                <template data-template-id="tcard">
-                  <article class="treaty-card" data-field-attr="severity|data-severity">
-                    <header class="tc-head">
-                      <h5 class="tc-name" data-field="name"></h5>
-                      <span class="tc-meta" data-field="meta"></span>
-                      <span class="tc-severity"></span>
-                    </header>
-                    <dl class="tc-body">
-                      <dt>Original scope</dt>
-                      <dd data-field="scope"></dd>
-                      <dt>Relevance to AI in space</dt>
-                      <dd data-field="relevance"></dd>
-                    </dl>
-                    <div class="tc-gaps">
-                      <h6 class="tc-gaps-label">Regulatory gaps</h6>
-                      <ul class="tc-gaps-list" data-field-list="gaps"></ul>
-                    </div>
-                  </article>
-                </template>
-              </div>
-            </details>
-
-            <details class="gov-group">
-              <summary class="gov-group-label">
-                <span class="gg-chevron" aria-hidden="true"></span>
-                <span class="gg-label" data-bind="governance.groups.1.label"></span>
-                <span class="gg-count" data-bind="governance.groups.1.count"></span>
-              </summary>
-              <div class="gov-grid" data-bind-list="governance.groups.1.treaties" data-template="tcard2">
-                <template data-template-id="tcard2">
-                  <article class="treaty-card" data-field-attr="severity|data-severity">
-                    <header class="tc-head">
-                      <h5 class="tc-name" data-field="name"></h5>
-                      <span class="tc-meta" data-field="meta"></span>
-                      <span class="tc-severity"></span>
-                    </header>
-                    <dl class="tc-body">
-                      <dt>Original scope</dt>
-                      <dd data-field="scope"></dd>
-                      <dt>Relevance to AI in space</dt>
-                      <dd data-field="relevance"></dd>
-                    </dl>
-                    <div class="tc-gaps">
-                      <h6 class="tc-gaps-label">Regulatory gaps</h6>
-                      <ul class="tc-gaps-list" data-field-list="gaps"></ul>
-                    </div>
-                  </article>
-                </template>
-              </div>
-            </details>
-
-            <details class="gov-group">
-              <summary class="gov-group-label">
-                <span class="gg-chevron" aria-hidden="true"></span>
-                <span class="gg-label" data-bind="governance.groups.2.label"></span>
-                <span class="gg-count" data-bind="governance.groups.2.count"></span>
-              </summary>
-              <div class="gov-grid" data-bind-list="governance.groups.2.treaties" data-template="tcard3">
-                <template data-template-id="tcard3">
-                  <article class="treaty-card" data-field-attr="severity|data-severity">
-                    <header class="tc-head">
-                      <h5 class="tc-name" data-field="name"></h5>
-                      <span class="tc-meta" data-field="meta"></span>
-                      <span class="tc-severity"></span>
-                    </header>
-                    <dl class="tc-body">
-                      <dt>Original scope</dt>
-                      <dd data-field="scope"></dd>
-                      <dt>Relevance to AI in space</dt>
-                      <dd data-field="relevance"></dd>
-                    </dl>
-                    <div class="tc-gaps">
-                      <h6 class="tc-gaps-label">Regulatory gaps</h6>
-                      <ul class="tc-gaps-list" data-field-list="gaps"></ul>
-                    </div>
-                  </article>
-                </template>
-              </div>
-            </details>
-
-            <details class="gov-group">
-              <summary class="gov-group-label">
-                <span class="gg-chevron" aria-hidden="true"></span>
-                <span class="gg-label" data-bind="governance.groups.3.label"></span>
-                <span class="gg-count" data-bind="governance.groups.3.count"></span>
-              </summary>
-              <div class="gov-grid" data-bind-list="governance.groups.3.treaties" data-template="tcard4">
-                <template data-template-id="tcard4">
-                  <article class="treaty-card" data-field-attr="severity|data-severity">
-                    <header class="tc-head">
-                      <h5 class="tc-name" data-field="name"></h5>
-                      <span class="tc-meta" data-field="meta"></span>
-                      <span class="tc-severity"></span>
-                    </header>
-                    <dl class="tc-body">
-                      <dt>Original scope</dt>
-                      <dd data-field="scope"></dd>
-                      <dt>Relevance to AI in space</dt>
-                      <dd data-field="relevance"></dd>
-                    </dl>
-                    <div class="tc-gaps">
-                      <h6 class="tc-gaps-label">Regulatory gaps</h6>
-                      <ul class="tc-gaps-list" data-field-list="gaps"></ul>
-                    </div>
-                  </article>
-                </template>
-              </div>
-            </details>
-
-            <p class="matrix-note" data-bind="governance.note"></p>
-          </section>
         </div>
       </section>
+
+      <!-- Scene 3.5: Regulation network — two-cluster diagram with ghost edges -->
+      <section
+        class="scene scene-regnet"
+        data-scene="regNet"
+        data-range="0.82,0.88"
+        aria-labelledby="sc-regnet-h"
+      >
+        <div class="regnet-sticky">
+          <header class="regnet-head">
+            <p class="regnet-kicker" data-bind="regNet.kicker"></p>
+            <h2 class="regnet-heading" id="sc-regnet-h" data-bind="regNet.heading"></h2>
+            <p class="regnet-lede" data-bind="regNet.lede"></p>
+          </header>
+          <div class="regnet-frame" data-regnet-frame data-beat="1">
+            <p class="regnet-cluster-label regnet-cluster-label--space">
+              <span class="rn-cluster-name" data-bind="regNet.spaceCluster.label"></span>
+              <span class="rn-cluster-sub" data-bind="regNet.spaceCluster.sub"></span>
+            </p>
+            <p class="regnet-cluster-label regnet-cluster-label--ai">
+              <span class="rn-cluster-name" data-bind="regNet.aiCluster.label"></span>
+              <span class="rn-cluster-sub" data-bind="regNet.aiCluster.sub"></span>
+            </p>
+            <div class="regnet-stage-wrap">
+              <div class="regnet-stage" data-regnet-stage></div>
+              <div class="rn-tooltip" data-regnet-tooltip role="tooltip" aria-hidden="true">
+                <p class="rn-tooltip-name" data-rn-tip-name></p>
+                <p class="rn-tooltip-meta" data-rn-tip-meta></p>
+                <p class="rn-tooltip-text" data-rn-tip-text></p>
+              </div>
+            </div>
+            <div class="regnet-caption-rail">
+              <p class="regnet-beat-label" data-regnet-beat-label></p>
+              <p class="regnet-caption" data-regnet-caption></p>
+            </div>
+          </div>
+          <p class="regnet-closer" data-bind="regNet.closer"></p>
+        </div>
+      </section>
+
 
       <!-- Scene 4: Futures -->
       <section
@@ -1060,7 +969,6 @@
           <footer class="closer">
             <p class="closer-line" data-bind="futures.closer.line"></p>
             <p class="closer-cta" data-bind="futures.closer.cta"></p>
-            <p class="colophon">Last edited: 22/04/2026</p>
           </footer>
         </div>
       </section>

@@ -7,21 +7,21 @@ export const copy = {
     author: "Asger Møller Grimberg",
     dateline: "An op-ed on the geopolitics of AI in space",
     description:
-      "An interactive op-ed on the geopolitics of AI data centers in space.",
+      "An interactive op-ed on the geopolitics of AI data centres in space.",
   },
 
   liftoff: {
-    kicker: "Geopolitics of Artificial Intelligence — Space & Datacenters",
+    kicker: "Geopolitics of Artificial Intelligence — Space & Data centres",
     title: "The Next Frontier of AI\nMay Not Be Trained on Earth.",
     subtitle:
-      "Within a decade, the most consequential compute on Earth may not be on Earth at all.",
+      "Within a decade, the most consequential compute may no longer be on Earth at all.",
     scrollHint: "Scroll to launch",
   },
 
   whyNow: {
     altitude: "12 km · Stratosphere",
     kicker: "Act I",
-    heading: "Datacenters in space: The strategic case.",
+    heading: "Data centres in space: The strategic case.",
     lede: "For most of the computing age, the question of where to put a server has been a dull matter of cheap land, cool air and abundant electrons. That has recently been changing.",
     figure: {
       src: "assets/energy-chart.jpeg",
@@ -112,14 +112,19 @@ export const copy = {
         body: [
           "The European Union operates within a system defined by partial capability and structural dependence. It faces the same terrestrial bottlenecks as the United States — grid congestion, slow permitting and local resistance — but without equivalent control over the firms that define the frontier of AI infrastructure. Its response has focused on areas where sovereignty can be more directly constructed: secure connectivity through the IRIS² constellation, and high-performance computing through EuroHPC.",
           "Neither addresses orbital compute directly. IRIS² is a connectivity play and EuroHPC has no orbital dimension. The Union's primary constraint is not where compute sits, but who owns it, and orbit does not resolve that.",
+        ],
+      },
+      {
+        subhead: "What emerges",
+        body: [
           "What emerges is a set of asymmetrical positions. In the United States, orbital compute is an extension of scale. In China, a potential instrument of autonomy. In Europe, a distant hedge against a dependency that space infrastructure alone cannot fix. The technology remains contingent on cost. Its strategic relevance is already legible in how it maps onto existing distributions of power.",
         ],
       },
     ],
     map: {
       kicker: "Orbital compute ecosystems",
-      heading: "Who Builds What, Where",
-      sub: "Public institutions and private firms shaping orbital AI across the three poles.",
+      heading: "Who to watch, in space and in compute.",
+      sub: "The institutions and private players whose positions today are most likely to shape any move to orbital AI.",
     },
     regions: [
       {
@@ -193,7 +198,7 @@ export const copy = {
       "The frameworks that govern outer space were written for a different era of competition. The Outer Space Treaty dates to 1967 and the Liability Convention to 1972. Their authors were concerned with states launching rockets, not private firms deploying autonomous systems that make consequential decisions without human authorisation. The result is a governance architecture that was never designed for the technology it now needs to address.",
       "The most fundamental problem is jurisdictional. Space law is state-centric by design: responsibility flows through national governments, which are expected to authorise and supervise their private operators. This worked tolerably well when the actors were national space agencies. It works poorly when a cloud-based AI system, developed by a private company, launched by a contractor and operating across multiple orbital regimes, causes harm. Attribution is difficult to establish because no treaty assigns legal responsibility to an algorithm. Enforcement is impractical because no body has meaningful authority over a system that exists, physically and legally, outside any national territory.",
       "AI governance, meanwhile, has developed on an entirely separate track. The UN frameworks that address artificial intelligence — among them the Global Digital Compact and the Global Partnership on AI — are voluntary instruments oriented toward terrestrial applications. The EU AI Act is binding, but its jurisdictional reach above the atmosphere is legally ambiguous and practically untested. The two bodies of law were never designed to speak to each other, and there is no institutional mechanism that currently compels them to.",
-      "What emerges is a cumulative gap rather than a single failure. Space law does not account for AI and AI regulation does not account for space. The matrix below maps the existing treaty landscape against the specific regulatory gaps that orbital AI systems expose, and assesses where the structural failures are most acute.",
+      "What emerges is a cumulative gap rather than a single failure. Space law does not account for AI and AI regulation does not account for space.",
     ],
     tableHeading: "Overview of AI treaties and Frameworks: Who, What, Why",
     tableSubhead:
@@ -377,20 +382,20 @@ export const copy = {
         {
           title: "The legal regime is running out of road.",
           body: "The Outer Space Treaty forbids states from claiming sovereignty over orbit or the Moon, but says nothing about storing data, running a training cluster, or owning the software that does either. The emerging logic is one of de facto control through use: a company that saturates a useful slice of orbit has effectively claimed it, a quiet appropriation by other means that the treaty never anticipated. The treaty regime bans formal sovereignty but does not regulate functional control.",
-          indicator: "The indicator to watch is orbital filings, applications submitted to the ITU to claim slices of orbit. And that indicator has already begun to tip. SpaceX has roughly 7,000 Starlink satellites in orbit and applications for 30,000 more under its Gen2 system. China\u2019s Guowang and Qianfan constellations, filed in response, account for another 27,000 between them. These satellites don\u2019t even need to launch. The filings alone are enough to lock other companies out of the same slices of orbit. Thus, the legal fiction of the commons is ending in practice before anyone has said so in law.",
+          indicator: "The indicator to watch is orbital filings, applications submitted to the ITU to claim slices of orbit. And that indicator has already begun to tip. SpaceX has roughly 7,000 Starlink satellites in orbit and applications for 30,000 more under its Gen2 system. China\u2019s Guowang and Qianfan constellations, filed in response, account for another 27,000 between them. These satellites don\u2019t even need to launch. The filings alone are enough to lock other companies out of the same slices of orbit. Thus, the legal fiction of the commons is ending in practice before anyone has said so in law. The slots being locked up are the same ones where compute satellites \u2014 orbital data centres included \u2014 will need to fly. Filings made for connectivity foreclose orbits before AI infrastructure has even applied.",
         },
         {
           title: "Who writes the rules when the treaty bodies cannot.",
           body: "The Artemis Accords, a non-binding US-led framework, now have 62 state signatories and operational norms that function in practice as law: safety zones, resource-extraction rights, reporting requirements. The International Lunar Research Station (ILRS), the China-Russia counterpart, has a different signatory list and a different set of norms. Neither is a treaty. Both are soft-law coalitions whose standards bind participants in practice, and states without space programmes of their own are being asked to choose between two rule-sets that neither of them wrote.",
-          indicator: "The indicator to watch is whose framework applies when a country actually extracts resources from the Moon, the Artemis Accords or the ILRS. And the first attempts are already scheduled. China\u2019s Chang\u2019e-7 is set to land at the lunar south pole in 2026 to look for water ice. Chang\u2019e-8 follows in 2028 to test whether China can actually extract water from the lunar surface. Artemis III, the American counterpart, is now scheduled for 2027, pushed back from an original 2025 target. Whichever framework governs the first real extraction \u2014 the Artemis Accords if the US gets there first, the ILRS if China does \u2014 becomes the standard for everyone else. Not through any treaty or declaration. Through whoever moved first.",
+          indicator: "The indicator to watch is whose framework applies when a country actually extracts resources from the Moon, the Artemis Accords or the ILRS. And the first attempts are already scheduled. China\u2019s Chang\u2019e-7 is set to land at the lunar south pole in 2026 to look for water ice. Chang\u2019e-8 follows in 2028 to test whether China can actually extract water from the lunar surface. Artemis III, the American counterpart, is now scheduled for 2027, pushed back from an original 2025 target. Whichever framework governs the first real extraction \u2014 the Artemis Accords if the US gets there first, the ILRS if China does \u2014 becomes the standard for everyone else. Not through any treaty or declaration. Through whoever moved first. The first lunar extraction will not be performed by humans alone. Whichever framework governs it will, by extension, govern the autonomous systems doing the extracting.",
         },
         {
           title: "The public/private distinction has collapsed.",
           body: "Article VI of the Outer Space Treaty makes each state responsible for the activities of its \u201Cnon-governmental entities,\u201D a phrase that assumed a clear line between governments and private companies. That line has now collapsed, and differently in each major political economy. In the United States, SpaceX\u2019s Starshield division operates a classified variant of Starlink for American intelligence agencies under a $1.8 billion contract with the National Reconnaissance Office, signed in 2021 and disclosed only in 2024: nominally private, functionally a state capability. In China, CASC and CASIC operate within a system whose military coordination was consolidated under the PLA Aerospace Force, established directly under the Central Military Commission on 19 April 2024. The same day, the Strategic Support Force it replaced was dissolved: nominally commercial, with a chain of command that is not. In Europe, Thales Alenia Space and Airbus are the principal industrial partners for IRIS\u00B2, the EU\u2019s \u20AC10.6 billion sovereign constellation contracted in December 2024: technically private, directed by a strategic-autonomy doctrine that is not.",
-          indicator: "The indicator to watch is liability attribution. The first serious incident involving a nominally private orbital system acting under classified state direction will expose whether Article VI can bear the weight placed on it, or whether the entire framework of state responsibility in space requires reconstruction from the ground up.",
+          indicator: "The indicator to watch is liability attribution. The first serious incident involving a nominally private orbital system acting under classified state direction will expose whether Article VI can bear the weight placed on it, or whether the entire framework of state responsibility in space requires reconstruction from the ground up. What’s at stake is not just satellites. It is which state, which doctrine and which oversight regime applies to the compute, the models and the inference running on them.",
         },
       ],
-      closer: "These three shifts are neither coordinated nor reversible. By 2030, when the ISS is retired, when Tiangong is the only government-run outpost in low-Earth orbit, and when Chang\u2019e-8 has tested Chinese extraction of lunar water ice, the questions of who governs AI in space and on whose terms will already have been answered. Those answers will not have come from treaty negotiation. They will have come from what the operators did in the meantime.",
+      closer: "These three shifts are neither coordinated nor reversible. By 2030, when the ISS is retired, when Tiangong is the only government-run outpost in low-Earth orbit, and when Chang\u2019e-8 has tested Chinese extraction of lunar water ice, the questions of who governs AI in space and on whose terms will already have been answered. Those answers will not have come from treaty negotiation. They will have come from what the operators did in the meantime. By then, the question won\u2019t be whether AI in space is regulated. It will be by whom, and on whose terms.",
     },
     closer: {
       line: "The rocket has already left the pad.",
@@ -399,7 +404,7 @@ export const copy = {
   },
 
   timeline: {
-    kicker: "What comes next",
+    kicker: "The next decade in orbit",
     heading: "Upcoming developments.",
     bands: {
       top: "COMMERCIAL / TECHNICAL",
@@ -422,7 +427,7 @@ export const copy = {
         year: "2025",
         highlight: true,
         top: [
-          { text: "First commercial data hardware delivered to the lunar surface (Lonestar’s “Freedom Mission”)", highlight: true },
+          { text: "First commercial data hardware delivered to the lunar surface (Lonestar’s “Freedom Mission”)", highlight: true, ai: true },
         ],
         bottom: [
           { text: "Publicly reported space cyber incidents up 118% year-on-year (Jan–Aug)", highlight: true },
@@ -430,10 +435,12 @@ export const copy = {
       },
       {
         year: "2026",
-        top: [],
+        top: [
+          { text: "Google’s Suncatcher: first on-orbit TPU performance results", ai: true },
+        ],
         bottom: [
           { text: "UN COPUOS Long-Term Sustainability working group delivers draft report" },
-          { text: "EU AI Act full applicability" },
+          { text: "EU AI Act full applicability", ai: true },
         ],
       },
       {
@@ -441,18 +448,20 @@ export const copy = {
         top: [
           { text: "Artemis III" },
           { text: "IRIS² initial services" },
-          { text: "Axiom launches orbital data-centre prototype at ISS" },
-          { text: "Google launches its Project Suncatcher demonstration satellites" },
+          { text: "Axiom launches orbital data-centre prototype at ISS", ai: true },
+          { text: "Google launches its Project Suncatcher demonstration satellites", ai: true },
         ],
         bottom: [
           { text: "UN Working Group on space resources report to COPUOS" },
           { text: "UNISPACE IV convening proposed" },
+          { text: "First EU AI Act enforcement test on a non-EU space operator (anticipated)", ai: true },
         ],
       },
       {
         year: "2028",
         top: [
           { text: "China’s Chang’e-8 tests extraction of lunar water ice" },
+          { text: "First sustained AI inference workload demonstrated in orbit", ai: true },
         ],
         bottom: [],
       },
@@ -461,6 +470,7 @@ export const copy = {
         top: [
           { text: "~80,000 satellites in orbit; ~70% commercially owned" },
           { text: "ISS retired; private LEO stations take over (Axiom, Starlab, Orbital Reef, Vast, Above: Space)" },
+          { text: "First orbital data-centre demonstrator above 100 kW (target)", ai: true },
         ],
         bottom: [
           { text: "Tiangong: the only government-run station left in low-Earth orbit" },
@@ -480,6 +490,106 @@ export const copy = {
         bottom: [],
       },
     ],
+  },
+
+  regNet: {
+    kicker: "The regulatory chasm",
+    heading: "Two systems. No bridge.",
+    lede: "Space law was written for hardware in a state-centric era. AI regulation was written for software on the ground. Neither was designed for what happens when a model trains itself in orbit.",
+    beats: [
+      {
+        label: "01 · Two systems",
+        caption: "Two regulatory systems sit either side of the Kármán line. Each has its own treaties, regulators and logic. Neither was drafted with the other in mind.",
+      },
+      {
+        label: "02 · Space treaties",
+        caption: "Space treaties were drafted between 1967 and 1979 to govern states launching hardware. They say nothing about software, training data, or autonomous decision-making.",
+      },
+      {
+        label: "03 · AI frameworks",
+        caption: "AI regulation is younger and almost entirely terrestrial. The EU AI Act, GDPR, the OECD/UN AI compacts — all assume the system runs somewhere on Earth.",
+      },
+      {
+        label: "04 · Bridges that don’t hold",
+        caption: "There have been attempts to bridge the two — by analogy, by soft-law reference, by jurisdictional stretch. None binds. Each connection breaks at the point of attribution, scope or enforcement.",
+      },
+      {
+        label: "05 · What falls between",
+        caption: "What sits in the chasm is what nobody regulates: the technical questions that orbital AI actually raises. They have no home in either system.",
+      },
+    ],
+    spaceCluster: {
+      label: "Space treaties & soft law",
+      sub: "Designed for state actors operating hardware. Pre-AI in concept, drafting and enforcement.",
+      nodes: [
+        { id: "ost", name: "Outer Space Treaty", year: "1967 · 114 parties", anchor: true, x: 240, y: 320,
+          desc: "Bedrock of space law. Holds states responsible for their nationals’ activities in orbit and bans national appropriation. Says nothing about software, datasets, or autonomous decision-making — and Article VI’s state-private distinction is now blurred by classified contracting." },
+        { id: "liab", name: "Liability Convention", year: "1972 · 98 parties", x: 320, y: 195,
+          desc: "Assigns liability to launching states for damage caused by space objects. Built for human-operated hardware. Fault attribution becomes near-impossible when the cause is an autonomous AI decision, and the framework has no place for cloud-based AI services." },
+        { id: "reg", name: "Registration Convention", year: "1976 · 73 parties", x: 360, y: 320,
+          desc: "Requires states to register their space objects with the UN. Provides traceability of the hardware — but not of its AI capabilities, autonomy level, or post-launch model updates that change behaviour in orbit." },
+        { id: "rescue", name: "Rescue Agreement", year: "1968 · 98 parties", x: 320, y: 425,
+          desc: "Crew-safety treaty: states must rescue astronauts and return space objects. Silent on AI decision-making in life-critical crewed systems and on human override of autonomous spacecraft." },
+        { id: "moon", name: "Moon Agreement", year: "1979 · 18 parties", weak: true, x: 220, y: 510,
+          desc: "Declares the Moon a common heritage of mankind and prohibits unilateral resource appropriation. Limited ratification — none of the major spacefaring states are parties. Effectively eclipsed by the Artemis Accords." },
+        { id: "itu", name: "ITU Radio Regs", year: "Ongoing", x: 130, y: 425,
+          desc: "Allocates radio spectrum and orbital slots; the de facto coordinator of who flies where. Mega-constellation filings now overwhelm its process, and it does not govern AI-driven dynamic spectrum sharing or interference avoidance." },
+        { id: "copuos", name: "COPUOS LTS Guidelines", year: "2019 · Voluntary", soft: true, x: 130, y: 210,
+          desc: "Twenty-one voluntary guidelines for sustainable use of outer space. Touch on situational awareness and collision avoidance — increasingly AI-relevant in practice — but with no enforcement mechanism and uneven adoption across spacefaring states." },
+      ],
+      edges: [
+        { from: "ost", to: "liab" },
+        { from: "ost", to: "reg" },
+        { from: "ost", to: "rescue" },
+        { from: "ost", to: "moon", weak: true },
+        { from: "ost", to: "itu" },
+        { from: "copuos", to: "ost", soft: true },
+        { from: "copuos", to: "itu", soft: true },
+      ],
+    },
+    aiCluster: {
+      label: "AI & data regulation",
+      sub: "Designed for terrestrial systems. Built around data subjects, EU markets and human operators.",
+      nodes: [
+        { id: "eu", name: "EU AI Act", year: "2024 · EU member states", anchor: true, x: 960, y: 320,
+          desc: "First binding AI law. Classifies systems by risk and sets conformity, transparency and oversight duties. Applies to AI marketed or used in the EU; how it reaches a model running in orbit is legally ambiguous and practically untested." },
+        { id: "gdpr", name: "GDPR", year: "2018 · EU + EEA", x: 880, y: 195,
+          desc: "Regulates processing of personal data of EU residents. Applies to Earth-observation AI that captures personal data, but resolution thresholds for personal data from orbit are undefined and AI inference from satellite imagery is not explicitly covered." },
+        { id: "coe", name: "CoE AI Framework", year: "2024 · Council of Europe", x: 1085, y: 320,
+          desc: "First international AI treaty: binds parties to human-rights, democracy and rule-of-law obligations across the AI lifecycle. Drafted with terrestrial deployment in mind; orbital applications are not addressed." },
+        { id: "gdc", name: "Global Digital Compact", year: "2024 · Voluntary", soft: true, x: 1075, y: 210,
+          desc: "UN Pact for the Future commitment aligning AI with human rights and SDGs. Voluntary, with no binding obligations and no mechanism connecting it to space-law bodies." },
+        { id: "gpai", name: "GPAI / OECD AI", year: "2020–25 · Voluntary", soft: true, x: 1075, y: 425,
+          desc: "OECD-anchored multilateral AI principles and working groups. Influential on national policy, but soft-law and silent on space-specific applications." },
+        { id: "bletchley", name: "Bletchley / Seoul / Paris", year: "2023–25 · Voluntary", soft: true, x: 985, y: 510,
+          desc: "Successive AI Safety Summits producing declarations on frontier-model risk and evaluations. Generated the AI Safety Institute network. None of the texts engages orbital deployment." },
+        { id: "exp", name: "Dual-use export controls", year: "Ongoing", x: 855, y: 425,
+          desc: "US BIS rules, EU Dual-Use Regulation and the Wassenaar Arrangement constrain advanced AI accelerators and related technology. They stop at the launchpad: once compute is in orbit, control over its operation is contractual, not regulatory." },
+      ],
+      edges: [
+        { from: "eu", to: "gdpr" },
+        { from: "eu", to: "coe" },
+        { from: "gdc", to: "gpai", soft: true },
+        { from: "bletchley", to: "gpai", soft: true },
+        { from: "bletchley", to: "eu", soft: true },
+        { from: "exp", to: "eu" },
+      ],
+    },
+    ghostEdges: [
+      { from: "ost", to: "eu", reason: "EU AI Act jurisdiction above the atmosphere is legally untested." },
+      { from: "liab", to: "gdpr", reason: "Liability for AI-caused data harm in orbit fits no existing regime." },
+      { from: "reg", to: "eu", reason: "Registration says nothing about AI capabilities or post-launch model updates." },
+      { from: "copuos", to: "gpai", reason: "Soft-law guidance touching both is non-binding and uncoordinated." },
+      { from: "itu", to: "exp", reason: "Spectrum coordination doesn’t see AI; export controls stop at the launchpad." },
+    ],
+    chasmLabels: [
+      "Algorithmic fault attribution",
+      "In-orbit model training",
+      "Autonomous targeting in space",
+      "Dual-use compute in orbit",
+      "AI-driven debris avoidance",
+    ],
+    closer: "No treaty currently contains explicit, binding provisions specifically governing AI in outer space. All coverage is derivative — applied by analogy from frameworks designed for a pre-AI era. Where binding law is absent, the first actor to operate sets the terms.",
   },
 
   openQuestions: {

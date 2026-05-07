@@ -1567,6 +1567,31 @@ body.stage-muted .cluster {
 .tl-event.is-red {
   color: var(--economist-red);
 }
+/* AI / orbital data-centre milestones — picked out with a cyan accent
+   so the reader can scan the chart for the AI thread without losing
+   the broader space context. */
+.tl-event.is-ai {
+  color: #d8f7fa;
+}
+.tl-event.is-ai .tl-event-text {
+  padding-left: 0.55rem;
+  border-left: 2px solid rgba(125, 249, 255, 0.7);
+}
+.tl-event.is-ai .tl-event-text::before {
+  content: "AI · ";
+  font-family: var(--mono);
+  font-size: 0.66em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7df9ff;
+  margin-right: 0.15rem;
+}
+.tl-event.is-ai.is-red {
+  color: var(--economist-red);
+}
+.tl-event.is-ai.is-red .tl-event-text {
+  border-left-color: rgba(125, 249, 255, 0.7);
+}
 .tl-event-text {
   display: block;
 }
@@ -1643,11 +1668,14 @@ body.stage-muted .cluster {
 
 /* ---------- Scene 4.75: Open Questions (3x2 flip cards) ---------- */
 
-/* Pull the cards up close under the timeline — overrides the default
-   non-liftoff scene-inner top padding so there's no tall gap between
-   the timeline pin releasing and the questions header. */
+/* Pull the cards up close under the timeline AND drop the inherited
+   sticky 100vh — the cards are short, so without this the scene
+   leaves a viewport of empty starfield below them before the closer.*/
 .scene-openq .scene-inner {
+  position: static;
+  min-height: 0;
   padding-top: clamp(0.5rem, 1.5vh, 1.5rem) !important;
+  padding-bottom: clamp(2rem, 4vh, 3rem) !important;
 }
 .oq-hint {
   font-family: var(--mono);
@@ -1785,9 +1813,441 @@ body.stage-muted .cluster {
 }
 .reduced-motion .oq-cue { display: none; }
 
-/* The closer scene is a quiet outro — let the regular .scene-inner
-   layout handle it, but give it a touch more breathing room above. */
+/* The closer scene is a quiet outro. Default scene-inner is sticky
+   with min-height 100vh which leaves a full viewport of starfield
+   below the closing line — drop those defaults so the page actually
+   ends right after the closer text.
+   !important is needed because .scene:not(.scene-liftoff) .scene-inner
+   has higher specificity than this selector. */
 .scene-closer .scene-inner {
-  padding-top: clamp(4rem, 12vh, 8rem);
-  padding-bottom: clamp(4rem, 12vh, 8rem);
+  position: static;
+  min-height: 0;
+  padding-top: clamp(2rem, 6vh, 4rem) !important;
+  padding-bottom: clamp(0.6rem, 1.5vh, 1.4rem) !important;
+}
+.scene-closer {
+  /* Reset any inherited margin/padding on the section element too. */
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* ---------- Scene 3.5: Regulation network (the severed web) ----------
+   Two clusters of frameworks either side of a chasm. Solid edges are
+   the formal ties that exist; ghost edges are the bridges that don't.
+   Driven by `data-beat` on .regnet-frame; CSS handles the rest. */
+
+.scene-regnet {
+  /* Five reading beats while pinned: total scroll ~ 260vh gives the
+     reader ~32vh per beat once the panel is pinned, which sits well
+     between "click through" and "trapped". */
+  min-height: 260vh;
+  pointer-events: auto;
+  /* Padding-bottom creates a brief calm after the network unsticks
+     and before Act IV begins, so the closer reads as a verdict
+     rather than crashing into the next heading. */
+  padding: 0 0 clamp(4rem, 10vh, 8rem);
+}
+.regnet-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  align-content: start;
+  gap: clamp(0.6rem, 1.2vh, 1rem);
+  padding: clamp(1.2rem, 3vh, 2rem) clamp(1.5rem, 4vw, 3rem) clamp(1.2rem, 3vh, 2rem);
+}
+.regnet-head {
+  max-width: 86rem;
+  width: 100%;
+  margin: 0 auto;
+}
+.regnet-kicker {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--economist-red);
+  margin: 0 0 0.4rem;
+}
+.regnet-heading {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: #fafbfc;
+  margin: 0;
+  border-bottom: 2px solid var(--economist-red);
+  padding-bottom: 0.5rem;
+  max-width: 28ch;
+}
+.regnet-lede {
+  margin: 0.7rem 0 0;
+  font-family: var(--serif);
+  font-size: clamp(0.92rem, 1.1vw, 1rem);
+  line-height: 1.5;
+  color: var(--ink);
+  max-width: 70ch;
+}
+
+.regnet-frame {
+  position: relative;
+  width: 100%;
+  max-width: 96rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  /* Reserve space at the top for the absolutely-positioned cluster
+     labels so they don't overlap the SVG content. */
+  padding-top: 3rem;
+}
+.regnet-cluster-label {
+  position: absolute;
+  top: clamp(0.4rem, 0.8vh, 0.8rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  margin: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+.regnet-cluster-label--space { left: clamp(0.5rem, 2vw, 2rem); }
+.regnet-cluster-label--ai { right: clamp(0.5rem, 2vw, 2rem); text-align: right; align-items: flex-end; }
+.rn-cluster-name {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(220, 230, 255, 0.7);
+}
+.rn-cluster-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.78rem;
+  line-height: 1.3;
+  color: rgba(220, 230, 255, 0.55);
+  max-width: 28ch;
+}
+
+/* Wrap that anchors the stage and the absolutely-positioned tooltip. */
+.regnet-stage-wrap {
+  position: relative;
+  width: 100%;
+  /* Clamped so the SVG doesn't fill enormous heights on tall viewports
+     and crowd the closer underneath. */
+  height: clamp(360px, 56vh, 640px);
+}
+.regnet-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.regnet-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.55));
+}
+
+/* Chasm column wash — quiet vertical tint, no border. */
+.rn-chasm-bg {
+  fill: rgba(227, 18, 11, 0.05);
+  stroke: none;
+}
+
+/* ---- Nodes ---- */
+.rn-node {
+  cursor: pointer;
+  outline: none;
+}
+.rn-node:focus-visible .rn-node-dot {
+  stroke: var(--economist-red);
+  stroke-width: 3;
+}
+.rn-node-hit {
+  fill: transparent;
+  pointer-events: all;
+}
+.rn-node:hover .rn-node-dot {
+  fill: rgba(227, 18, 11, 0.22);
+  stroke: var(--economist-red);
+}
+.rn-node--ai:hover .rn-node-dot {
+  fill: rgba(125, 249, 255, 0.18);
+  stroke: #7df9ff;
+}
+.rn-node-dot {
+  fill: rgba(7, 14, 34, 0.9);
+  stroke: rgba(220, 230, 255, 0.55);
+  stroke-width: 1.5;
+  transition: fill 360ms var(--ease-out), stroke 360ms var(--ease-out), opacity 360ms var(--ease-out);
+}
+.rn-node--space.is-anchor .rn-node-dot {
+  stroke: var(--economist-red);
+  stroke-width: 2.5;
+  fill: rgba(227, 18, 11, 0.18);
+}
+.rn-node--ai.is-anchor .rn-node-dot {
+  stroke: #7df9ff;
+  stroke-width: 2.5;
+  fill: rgba(125, 249, 255, 0.14);
+}
+.rn-node.is-soft .rn-node-dot {
+  stroke-dasharray: 3 3;
+}
+.rn-node-label {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 500;
+  fill: #fafbfc;
+  paint-order: stroke;
+  stroke: rgba(7, 14, 34, 0.85);
+  stroke-width: 4;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+.rn-node-year {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  fill: rgba(220, 230, 255, 0.6);
+  pointer-events: none;
+}
+.rn-node--space.is-anchor .rn-node-label,
+.rn-node--ai.is-anchor .rn-node-label {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* ---- Cluster edges ---- */
+.rn-edge {
+  stroke-width: 1.4;
+  fill: none;
+  transition: opacity 360ms var(--ease-out);
+}
+.rn-edge--space { stroke: rgba(227, 18, 11, 0.55); }
+.rn-edge--ai { stroke: rgba(125, 249, 255, 0.45); }
+.rn-edge.is-soft { stroke-dasharray: 5 5; opacity: 0.65; }
+.rn-edge.is-weak { opacity: 0.38; }
+
+/* ---- Ghost edges (the bridges that don't bind) ---- */
+.rn-ghost {
+  stroke: rgba(227, 18, 11, 0.32);
+  stroke-width: 1;
+  stroke-dasharray: 3 6;
+  fill: none;
+  opacity: 0.18;
+  transition: opacity 480ms var(--ease-out), stroke 480ms var(--ease-out);
+}
+
+/* ---- Chasm labels ---- */
+.rn-chasm-label {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13.5px;
+  fill: rgba(220, 230, 255, 0.92);
+  paint-order: stroke;
+  stroke: rgba(7, 14, 34, 0.85);
+  stroke-width: 3.5;
+  stroke-linejoin: round;
+  opacity: 0;
+  transition: opacity 600ms var(--ease-out);
+}
+
+/* ---- Beat-driven highlights ---- */
+/* Beat 1: both clusters dim, just establish the picture. */
+[data-beat="1"] .rn-node,
+[data-beat="1"] .rn-edge { opacity: 0.55; }
+[data-beat="1"] .rn-ghost { opacity: 0; }
+[data-beat="1"] .rn-chasm-label { opacity: 0; }
+
+/* Beat 2: space cluster rises, AI dims further. */
+[data-beat="2"] .rn-cluster--space .rn-node,
+[data-beat="2"] .rn-cluster--space .rn-edge { opacity: 1; }
+[data-beat="2"] .rn-cluster--ai .rn-node,
+[data-beat="2"] .rn-cluster--ai .rn-edge { opacity: 0.22; }
+[data-beat="2"] .rn-ghost { opacity: 0; }
+
+/* Beat 3: AI cluster rises, space dims. */
+[data-beat="3"] .rn-cluster--ai .rn-node,
+[data-beat="3"] .rn-cluster--ai .rn-edge { opacity: 1; }
+[data-beat="3"] .rn-cluster--space .rn-node,
+[data-beat="3"] .rn-cluster--space .rn-edge { opacity: 0.22; }
+[data-beat="3"] .rn-ghost { opacity: 0; }
+
+/* Beat 4: both clusters visible, ghost edges flicker in red — the
+   bridges being attempted, and not holding. */
+[data-beat="4"] .rn-node,
+[data-beat="4"] .rn-edge { opacity: 0.75; }
+[data-beat="4"] .rn-ghost {
+  opacity: 0.85;
+  stroke: rgba(255, 60, 30, 0.9);
+  animation: rn-ghost-flicker 2.4s var(--ease-out) 1;
+}
+@keyframes rn-ghost-flicker {
+  0%   { opacity: 0; stroke-width: 0.5; }
+  18%  { opacity: 1; stroke-width: 2; }
+  35%  { opacity: 0.5; stroke-width: 1; }
+  55%  { opacity: 1; stroke-width: 2.2; }
+  75%  { opacity: 0.4; stroke-width: 1; }
+  100% { opacity: 0.85; stroke-width: 1; }
+}
+
+/* Beat 5: ghost edges settle dim again; chasm labels fade in. */
+[data-beat="5"] .rn-node,
+[data-beat="5"] .rn-edge { opacity: 0.55; }
+[data-beat="5"] .rn-ghost {
+  opacity: 0.32;
+  stroke: rgba(227, 18, 11, 0.45);
+}
+[data-beat="5"] .rn-chasm-label { opacity: 1; }
+
+/* Caption rail under the chart. */
+.regnet-caption-rail {
+  max-width: 86rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 0.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.regnet-beat-label {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--economist-red);
+  margin: 0;
+}
+.regnet-caption {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(0.92rem, 1.15vw, 1.05rem);
+  line-height: 1.45;
+  color: #fafbfc;
+  margin: 0;
+  max-width: 78ch;
+  min-height: 2.6em;
+}
+.regnet-closer {
+  max-width: 60ch;
+  /* Big breathing room either side so the closer reads as a
+     standout pull-quote, not a caption. ~3–4cm of space above and
+     below on typical screens. */
+  margin: clamp(3.5rem, 8vh, 6rem) auto clamp(3.5rem, 8vh, 6rem);
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.1rem, 1.8vw, 1.55rem);
+  line-height: 1.35;
+  color: #fafbfc;
+  text-align: center;
+  padding: clamp(3rem, 7vh, 5rem) 0 clamp(3rem, 7vh, 5rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  /* Hidden until the network has been walked through. The selector
+     below ([data-beat="5"]) lifts it into view at the final beat. */
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+  pointer-events: none;
+}
+.regnet-sticky[data-beat="5"] .regnet-closer {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+/* When the closer takes the screen, dim AND shrink the network so
+   the verdict has room to breathe without overflowing the sticky
+   panel. The closer block grows ~6–10rem of padding/margin combined
+   either side; the stage gives up roughly that much height. */
+.regnet-sticky[data-beat="5"] .regnet-stage-wrap {
+  opacity: 0.4;
+  height: clamp(220px, 34vh, 380px);
+  transition: opacity 700ms var(--ease-out), height 700ms var(--ease-out);
+}
+.regnet-sticky[data-beat="5"] .regnet-caption {
+  opacity: 0.55;
+}
+.regnet-sticky[data-beat="5"] .regnet-beat-label {
+  opacity: 0.7;
+}
+
+/* Narrow viewports: collapse the network into a stacked summary so
+   the editorial point survives without the SVG geometry. */
+@media (max-width: 980px) {
+  .scene-regnet { min-height: auto; }
+  .regnet-sticky {
+    position: relative;
+    height: auto;
+    grid-template-rows: auto auto auto;
+  }
+  .regnet-frame { min-height: 80vh; }
+  .rn-chasm-label { font-size: 11px; }
+  .rn-node-label { font-size: 11px; }
+  .rn-node-year { font-size: 9px; }
+  .regnet-cluster-label--ai .rn-cluster-sub,
+  .regnet-cluster-label--space .rn-cluster-sub { display: none; }
+}
+
+.reduced-motion .regnet-sticky {
+  position: relative;
+  height: auto;
+}
+.reduced-motion .rn-ghost { opacity: 0.3; animation: none; }
+.reduced-motion .rn-chasm-label { opacity: 1; }
+.reduced-motion .rn-node,
+.reduced-motion .rn-edge { opacity: 1 !important; }
+
+/* ---- Tooltip ----
+   Hover/focus a node and a small panel surfaces with the analysis
+   copy (relevance + gaps), positioned just above the node. */
+.rn-tooltip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: clamp(240px, 28vw, 340px);
+  padding: 0.7rem 0.9rem 0.85rem;
+  background: rgba(7, 14, 34, 0.96);
+  border: 1px solid rgba(227, 18, 11, 0.6);
+  border-left-width: 3px;
+  border-radius: 4px;
+  box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.85);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out);
+  z-index: 10;
+}
+.rn-tooltip.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.rn-tooltip-name {
+  margin: 0 0 0.15rem;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 0.98rem;
+  line-height: 1.2;
+  color: #fafbfc;
+}
+.rn-tooltip-meta {
+  margin: 0 0 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(220, 230, 255, 0.6);
+}
+.rn-tooltip-text {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--ink);
 }
